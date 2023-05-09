@@ -1,6 +1,6 @@
 <?php require 'header.php';  ?>
 
-<?php require 'footer.php';  ?><?php require 'header.php';  ?>
+<?php require 'header.php';  ?>
 <?php
 require('function/function.php');
 $id = isset($_GET['id']) ? $_GET['id'] : NULL;
@@ -30,3 +30,4 @@ if($id==1){
         </div>
     </div>
 </div>
+<?php require 'footer.php';  ?>
