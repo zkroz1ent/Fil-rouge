@@ -73,12 +73,6 @@
                             <img src="img/fec_hand.png">
                         </div>
                     </div>
-                    <div class="scroll-down-btn">
-                        <div class="scroll-down-inner-btn">
-                            <span class="scroll-down-icon"></span>
-                        </div>
-                        Scroll
-                    </div>
                 </div>
             </div>
             <!-- #mainbanner start-->
