@@ -70,7 +70,7 @@
                             </li>
                         </ul>
                         <div class="image-finger">
-                            <img src="https://www.fecpos.com/proimages/index/fec_hand.png">
+                            <img src="http://localhost/fil-rouge/fec_hand.png">
                         </div>
                     </div>
                     <div class="scroll-down-btn">
