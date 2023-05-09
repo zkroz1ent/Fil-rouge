@@ -29,4 +29,4 @@ require('header.php'); ?>
     </table>
   </form>
 </div>
-<?php require('footer.php'); ?>
+<?php require('footer.php'); ?> 

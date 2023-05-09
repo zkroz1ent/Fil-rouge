@@ -32,7 +32,7 @@
 		label {
 			display: block;
 			margin-bottom: 10px;
-		}
+		} 
 		input[type="text"], input[type="email"], select {
 			padding: 10px;
 			border-radius: 4px;

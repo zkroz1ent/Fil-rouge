@@ -8,3 +8,4 @@ try {
 } catch (PDOException $ex) { //gestion des erreurs
     die("Erreur lors de la connexion SQL : " . $ex->getMessage());
 }
+ 

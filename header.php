@@ -30,7 +30,7 @@ include 'sql.php';
     <br>
     <br>
     
-
+ 
     <!-- Modal -->
     <div id="modal" class="modal">
         <!-- Contenu du modal -->

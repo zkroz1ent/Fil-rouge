@@ -26,7 +26,7 @@ define('ROOT', dirname(__FILE__));  // Racine du site en absolu (à utiliser dan
 // Fonctions
 include "function" . DS . "function.php";
 ?>
-
+ 
 <?php
 /**
  * Initialisations dans chaque page

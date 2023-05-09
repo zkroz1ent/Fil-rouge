@@ -25,7 +25,7 @@ if ($submit) {
     }
     if ($pseudo == $utilisateur["pseudo"] && ($utilisateur["mail"])) { //condition et verification de l'adresse mail et speudo
         $id_utilisateur = $utilisateur["id_utilisateur"];
-
+ 
         MailToDisk(
             $email,
             $pseudo,

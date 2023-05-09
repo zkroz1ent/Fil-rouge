@@ -23,7 +23,7 @@ require('header.php');
 $page = $_SERVER['PHP_SELF'];
 logToDisk($page, '', '');
 include 'sql.php'; ?>
-
+ 
 <div class="center">
     <h1>S'inscrire</h1>
     <form class="form" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">

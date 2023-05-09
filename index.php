@@ -173,7 +173,7 @@
 
                             </div>
                         </div>
-                    </div>
+                    </div> 
                 </div>
                 <div id="index_product" class="index_product-section index-section hidden">
                     <h3 class="text-left"><a href="https://www.fecpos.com/us/type1.html">New Products</a></h3>
