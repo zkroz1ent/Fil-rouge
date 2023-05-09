@@ -1,0 +1,314 @@
+@charset "UTF-8";
+
+/*全站*/
+
+img {
+  max-width: 100%;
+}
+
+.hideobj {
+  display: none;
+}
+
+a {
+  color: #000;
+  background-color: none;
+}
+
+a:hover,
+a:focus {
+  text-decoration: underline;
+  background: none;
+  color: #000;
+}
+
+/*會員登入項目*/
+#login-tabs li {
+  background: none;
+}
+
+#login-tabs a {
+  color: #000;
+  background: none;
+}
+
+#login-tabs a:hover,
+#login-tabs a:focus {
+  text-decoration: underline;
+  background: none;
+  color: #000;
+}
+
+/**表單元素**/
+fieldset.over-border {
+  border: 1px solid #ccc !important;
+  padding: 0 1.4em 1.4em 1.4em !important;
+  margin: 0 0 1.4em 0 !important;
+  border-radius: 16px;
+}
+
+legend.line-border {
+  font-size: 16px !important;
+  text-align: left !important;
+  width: inherit;
+  border-bottom: none;
+  display: none;
+}
+
+fieldset>div {
+  margin-top: 30px;
+}
+
+.red {
+  color: #cc0000;
+}
+
+.radio-inline input[type='radio'] {
+  margin-left: -20px;
+  float: left;
+}
+
+.radio-inline {
+  padding-left: 20px;
+  font-weight: normal;
+  margin-bottom: 0px;
+  vertical-align: middle;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.help-inline {
+  vertical-align: middle;
+  display: inline-block;
+  padding-top: 5px;
+  padding-left: 0px;
+  cursor: default;
+}
+
+.control-label {
+  cursor: default;
+}
+
+.form-show .input-prepend {
+  clear: both;
+}
+
+fieldset.instep-border {
+  border: 1px solid #ccc !important;
+  padding: 0 16px 16px 16px !important;
+  margin: 0 0 16px 0 !important;
+  border-radius: 15px;
+  /*圓角*/
+  background: #eeeeee;
+  height: 100px;
+  font-weight: bold;
+  color: #000000;
+  text-align: center;
+}
+
+fieldset.step-border {
+  border: 1px solid #ccc !important;
+  padding: 0 16px 16px 16px !important;
+  margin: 0 0 16px 0 !important;
+  border-radius: 15px;
+  /*圓角*/
+  height: 100px;
+  text-align: center;
+}
+
+legend.stepline-border {
+  text-align: center !important;
+  width: inherit;
+  border-bottom: none;
+}
+
+.enlarge {
+  clear: both;
+}
+
+@media only screen and (max-width : 480px) {
+  .navbar-inner li {
+    display: block;
+    width: 100%;
+  }
+}
+
+/*#header*/
+/*註冊*/
+
+#hello_member ul li a:hover,
+#hello_member ul li a:focus,
+#hello_member ul li a:active {
+  text-decoration: underline;
+  background: none;
+}
+
+/*語言*/
+#language_area ul li a {
+  color: #000;
+  background: none;
+}
+
+#language_area ul li a:hover,
+#language_area ul li a:focus,
+#language_area ul li a:active {
+  background: none;
+  text-decoration: underline;
+}
+/*
+#mainbanner {
+  padding-top: 5px;
+}
+*/
+
+/*--側欄--*/
+#sidebar {
+  padding: 10px 0px
+}
+
+#sidebar .nav-header {
+  background: #eee;
+  font-weight: bolder;
+  padding: 8px 15px;
+  font-size: 16px;
+}
+
+/*RSS*/
+#rss_area a {
+  text-shadow: none;
+}
+
+#rss_area a:hover {
+  text-shadow: none;
+}
+
+/*--內容區--*/
+#content {
+  padding: 0px 0px 50px;
+}
+
+
+
+/*個數*/
+.page-header {
+  border-bottom: 1px #eee solid;
+}
+
+/*產品頁*/
+
+/*產品介紹頁*/
+#pb_area {
+  /*border: 1px solid #ccc;*/
+  overflow: hidden;
+}
+
+.input-group {
+  display: table;
+  padding-bottom: 10px;
+  width: 100%;
+}
+
+.input-group .form-control {
+  margin-bottom: 0px;
+}
+
+.txtNormal {
+  /* overflow: auto;
+  width: 100%;
+  word-wrap: break-word; */
+}
+
+.listtxtspec .input-prepend {
+  padding: 1px 0px;
+  margin: 0px;
+}
+
+.clear {
+  clear: both;
+}
+
+#lineqty {
+  width: 30%;
+}
+
+/*頁籤**/
+.nav-tabs .active a {
+  font-weight: bold;
+}
+
+/*訊息用*/
+.msgcont {
+  width: 90%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin: 10px;
+}
+
+.msg_img_title {
+  width: 30%;
+}
+
+/*尾檔*/
+#cominfo ul li {
+  display: inline-block;
+}
+
+/* #copyright {
+  text-align: center;
+  padding: 10px 15px;
+  font-weight: bolder;
+} */
+
+#footlink ul li a {
+  border-radius: inherit;
+}
+
+#footlink ul li a:hover,
+.foot #footlink ul li a:focus,
+.foot #footlink ul li a:active {
+  background: none;
+  text-decoration: underline;
+}
+
+/*首頁用*/
+#index_msg_ul a {
+  background: #eee;
+  padding: 8px 15px;
+  font-size: 16px;
+  color: #000;
+}
+
+#index_msg_ul a:hover {
+  background: #eee;
+  padding: 8px 15px;
+  font-size: 16px;
+  color: #000;
+}
+
+#content .pshow_title {
+  border-left: 5px solid #ccc;
+  font-size: 18px;
+  font-weight: bold;
+  background-color: #eee;
+  padding: 7px;
+}
+
+/* ul {
+  list-style: none;
+} */
+
+#footer .ftbar {
+  background-color: #f8f8f8;
+  border-color: #e7e7e7;
+}
+
+/*style for google map  2015.10.21*/
+.googlemap {
+  width: 100%;
+  height: 12em;
+}
+
+.listimg a.btn.btn-link {
+  display: initial;
+}
