@@ -101,16 +101,16 @@
                                 <h3 class="text-left hidden"><a href="https://www.fecpos.com/us/product.html">Product Categories</a></h3>
                                 <ul class="product-list">
                                     <li class="incate product-item">
-                                        <a href="categorie.php?id=1" class="product-list-content" title="canape">
-                                            <div class="listimg"><img src="img\canape_roulette.jpg" border="0" alt="KIOSK" /></div>
-                                            <div class="list-name">canape</div>
-                                            <div class="prolistdesc"></div>
-                                        </a>
+                                            <a href="categorie.php?id=1" class="product-list-content" title="Chaise">
+                                                <div class="listimg"><img src="img\chaise.jpg" border="0" alt="BOX System" /></div>
+                                                <div class="list-name">Chaise</div>
+                                                <div class="prolistdesc"></div>
+                                            </a>
                                     </li>
                                     <li class="incate product-item">
-                                        <a href="categorie.php?id=2" class="product-list-content" title="Chaise">
-                                            <div class="listimg"><img src="img\chaise.jpg" border="0" alt="BOX System" /></div>
-                                            <div class="list-name">Chaise</div>
+                                        <a href="categorie.php?id=2" class="product-list-content" title="canape">
+                                            <div class="listimg"><img src="img\canape_roulette.jpg" border="0" alt="KIOSK" /></div>
+                                            <div class="list-name">canape</div>
                                             <div class="prolistdesc"></div>
                                         </a>
                                     </li>
