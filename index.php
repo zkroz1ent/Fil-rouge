@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html>
 
@@ -14,6 +16,7 @@
 
     <!-- #qsearch start -->
     <?php require 'header.php';  ?>
+    <?php  print_r($_SESSION)?>
     <!-- #header end-->
     <div class="mobile-menuWrap">
         <div class="container">
