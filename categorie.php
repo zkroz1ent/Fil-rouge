@@ -1,6 +1,4 @@
 <?php require 'header.php';  ?>
-
-<?php require 'header.php';  ?>
 <?php
 require('function/function.php');
 $id = isset($_GET['id']) ? $_GET['id'] : NULL;
