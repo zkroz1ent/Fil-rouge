@@ -4,7 +4,7 @@ session_start();
 include 'log/log.php';
 include 'sql.php';
 
-
+error_reporting(E_ERROR | E_PARSE);
 ?>
 
 <!DOCTYPE html>
