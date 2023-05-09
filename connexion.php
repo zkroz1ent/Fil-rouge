@@ -8,8 +8,8 @@ require('header.php'); ?>
     <!-- Formulaire permettant de se connecter -->
     <table>
       <tr>
-        <td><label for="nom">nom :</label></td>
-        <td><input type="text" name="nom" id="nom"></td>
+        <td><label for="pseudo">pseudo :</label></td>
+        <td><input type="text" name="pseudo" id="pseudo"></td>
       </tr>
       <tr>
         <td><label for="password">Mot de passe :</label></td>

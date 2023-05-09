@@ -1,4 +1,13 @@
 <?php
+
+
+//Création de la session
+session_start();
+include 'log/log.php';
+include 'sql.php';
+
+
+
 // Paramétrage pour certains serveurs qui n'affichent pas les erreurs PHP par défaut
 error_reporting(E_ALL | E_STRICT);
 ini_set('display_errors', '1');

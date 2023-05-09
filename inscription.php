@@ -7,9 +7,13 @@ $password2 = isset($_POST['password2']) ? $_POST['password2'] :  '';
 $nom = isset($_POST['nom']) ? $_POST['nom'] : '';
 $ligue = isset($_POST['ligue']) ? $_POST['ligue'] : '';
 $prenom = isset($_POST['prenom']) ? $_POST['prenom'] : '';
-$adr1 = isset($_POST['adr1']) ? $_POST['adr1'] : '';
-$adr2 = isset($_POST['adr2']) ? $_POST['adr2'] : '';
-$adr3 = isset($_POST['adr3']) ? $_POST['adr3'] : '';
+$adresse1 = isset($_POST['adresse1']) ? $_POST['adresse1'] : '';
+$adresse2 = isset($_POST['adresse2']) ? $_POST['adresse2'] : '';
+$adresse3 = isset($_POST['adresse3']) ? $_POST['adresse3'] : '';
+$adresse4 = isset($_POST['adresse4']) ? $_POST['adresse4'] : '';
+$pays = isset($_POST['pays']) ? $_POST['pays'] : '';
+$num_telephone = isset($_POST['num_telephone']) ? $_POST['num_telephone'] : '';
+
 $typeutil = isset($_POST['role']) ? $_POST['role'] : '';
 
 
@@ -43,26 +47,37 @@ include 'sql.php'; ?>
             <tr>
             
                 <td><label for="password">Mot de passe* : <br> au moins 8 char , 1  MAJ , un chiffre 1 char special</label></td>
-                <td><input type="password" id="password" name="password" value="<?php echo $password; ?>"></td>
+                <td><input type="password" id="password" name="password" value="<?php echo $password2; ?>"></td>
             </tr>
             <tr>
                 <td><label for="password2">Confirmer le mot de passe* : </label></td>
                 <td><input type="password" id="password2" name="password2" value="<?php echo $password2; ?>"></td>
             </tr>
         
-        
+            <tr>
+                <td><label for="num_telephone">num_telephone* : </label></td>
+                <td><input type="text" id="num_telephone" name="num_telephone" value="<?php echo $num_telephone; ?>"></td>
+            </tr>
             </tr>
             <tr>
-                <td><label for="adr1">Adresse* : </label></td>
-                <td><input type="text" id="adr1" name="adr1" value="<?php echo $adr1; ?>"></td>
+                <td><label for="adresse1">Adresse* : </label></td>
+                <td><input type="text" id="adresse1" name="adresse1" value="<?php echo $adresse1; ?>"></td>
             </tr>
             <tr>
-                <td><label for="adr2">Code Postal* : </label></td>
-                <td><input type="text" id="adr2" name="adr2" value="<?php echo $adr2; ?>"></td>
+                <td><label for="adresse2">Code Postal* : </label></td>
+                <td><input type="text" id="adresse2" name="adresse2" value="<?php echo $adresse2; ?>"></td>
             </tr>
             <tr>
-                <td><label for="adr3">Ville* : </label></td>
-                <td><input type="text" id="adr3" name="adr3" value="<?php echo $adr3; ?>"></td>
+                <td><label for="adresse3">Ville* : </label></td>
+                <td><input type="text" id="adresse3" name="adresse3" value="<?php echo $adresse3; ?>"></td>
+            </tr>
+            <tr>
+                <td><label for="adresse4">code postal* : </label></td>
+                <td><input type="text" id="adresse4" name="adresse3" value="<?php echo $adresse4; ?>"></td>
+            </tr>
+            <tr>
+                <td><label for="pays">Pays* : </label></td>
+                <td><input type="text" id="pays" name="pays" value="<?php echo $pays; ?>"></td>
             </tr>
             <td>
                 <p><a href="connexion.php">Déjà inscrit ?</a></p>
@@ -89,12 +104,11 @@ $password2 = isset($_POST['password2']) ? $_POST['password2'] :  '';
 $nom = isset($_POST['nom']) ? $_POST['nom'] : '';
 $prenom = isset($_POST['ligue']) ? $_POST['ligue'] : '';
 $prenom = isset($_POST['prenom']) ? $_POST['prenom'] : '';
-$adr1 = isset($_POST['adr1']) ? $_POST['adr1'] : '';
-$adr2 = isset($_POST['adr2']) ? $_POST['adr2'] : '';
-$adr3 = isset($_POST['adr3']) ? $_POST['adr3'] : '';
+$adresse1 = isset($_POST['adresse1']) ? $_POST['adresse1'] : '';
+$adresse2 = isset($_POST['adresse2']) ? $_POST['adresse2'] : '';
+$adresse3 = isset($_POST['adresse3']) ? $_POST['adresse3'] : '';
 $typeutil = isset($_POST['role']) ? $_POST['role'] : '';
 $submit = isset($_POST['submit']);
-
 $containsLetter  = preg_match('/[a-zA-Z]/',    $password);
 $containsDigit   = preg_match('/\d/',          $password);
 $containsSpecial = preg_match('/[^a-zA-Z\d]/', $password);
@@ -165,14 +179,19 @@ if ($submit) {
                     } catch (PDOException $e) {
                         die("<p>Erreur lors de la requête SQL : " . $e->getMessage() . "</p>");
                     }
+
+                   
                     try {
-                        $req = $dbh->prepare('INSERT INTO  adherent (adr1 ,adr2 ,adr3 ,id_utilisateur,id_club)VALUES (:adr1 ,:adr2 ,:adr3,:id_utilisateur,:id_club) ');
+                        $req = $dbh->prepare('INSERT INTO  adherent ( `adresse1`, `adresse2`, `adresse3`, `adresse4`, `Pays`, `num_telephone`, `id_utilisateur`) VALUES (:adresse1 ,:adresse2 ,:adresse3,:adresse4,:pays,:num_telephone,:id_utilisateur) ');
                         $req->execute(array(
-                            ':adr1' => $adr1,
-                            ':adr2' => $adr2,
-                            ':adr3' => $adr3,
-                            ':id_utilisateur' => $userinfo['id_utilisateur'],
-                            ':id_club' => $ligue
+                            ':adresse1' => $adresse1,
+                            ':adresse2' => $adresse2,
+                            ':adresse3' => $adresse3,
+                            ':adresse4' => $adresse4,
+                            ':pays' => $pays,
+                            ':num_telephone' => $num_telephone,
+                            ':id_utilisateur' => $userinfo['id_utilisateur']
+                            
                         ));
                         //  echo 'enregistrement effectué !';
                         // header('Location:connexion.php');

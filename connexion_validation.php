@@ -1,32 +1,32 @@
 <?php $active = 4;
 $title = "Connexion";
-require('header.php');
-require('sql.php');
+require('header.php'); 
 $page = $_SERVER['PHP_SELF'];
 
-$nom = isset($_POST['nom']) ? $_POST['nom'] :  "";
+$pseudo = isset($_POST['pseudo']) ? $_POST['pseudo'] :  "";
 
 $password = isset($_POST['password']) ? $_POST['password'] :  "";
-logToDisk($page, $nom, $password);
-//Si nom sup à 8 carac.
-if (strlen($nom) >= 0) {
+
+//Si pseudo sup à 8 carac.
+if (strlen($pseudo) >= 0) {
     //Si mdp sup à 8 carac.
     if (strlen($password) >= 0) {
         //On rentre la requête sql dans une variable
-        $sql = "SELECT * FROM utilisateur WHERE nom=:nom";
-        //Lecture du nom dans la BDD 
+        $sql = "SELECT * FROM utilisateur WHERE pseudo=:pseudo";
+        //Lecture du pseudo dans la BDD 
         try {
             $sth = $dbh->prepare($sql);
             $sth->execute(array(
-                ':nom' => $nom
+                ':pseudo' => $pseudo
             ));
             $user = $sth->fetch(PDO::FETCH_ASSOC);
         } //Gestion des erreurs
         catch (PDOException $ex) {
             die("Erreur lors de la requête SQL : " . $ex->getMessage());
         }
-        //Si nom et mdp correct alors connecté password_verify compare le mdp saisi avec le mdp crypté dans la BDD
-        if ($nom === $user['nom'] && password_verify($password, $user['mdp'])) {
+        print_r($user);
+        //Si pseudo et mdp correct alors connecté password_verify compare le mdp saisi avec le mdp crypté dans la BDD
+        if ($pseudo === $user['pseudo'] && password_verify($password, $user['mdp'])) {
             //détruit la variable mdp
             unset($user["mdp"]);
 
@@ -46,6 +46,4 @@ if (strlen($nom) >= 0) {
         header("Location: connexion.php");
     }
 }
-if ($utilisateur == 1) {
-    $sql = "SELECT ";
-}
+
