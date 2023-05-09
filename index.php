@@ -101,28 +101,28 @@
                                 <h3 class="text-left hidden"><a href="https://www.fecpos.com/us/product.html">Product Categories</a></h3>
                                 <ul class="product-list">
                                     <li class="incate product-item">
-                                        <a href="https://www.fecpos.com/us/category-KIOSK-kiosk.html" class="product-list-content" title="canape">
+                                        <a href="categorie.php?id=1" class="product-list-content" title="canape">
                                             <div class="listimg"><img src="img\canape_roulette.jpg" border="0" alt="KIOSK" /></div>
                                             <div class="list-name">canape</div>
                                             <div class="prolistdesc"></div>
                                         </a>
                                     </li>
                                     <li class="incate product-item">
-                                        <a href="https://www.fecpos.com/us/category-BOX-System-boxsystem.html" class="product-list-content" title="Chaise">
+                                        <a href="categorie.php?id=2" class="product-list-content" title="Chaise">
                                             <div class="listimg"><img src="img\chaise.jpg" border="0" alt="BOX System" /></div>
                                             <div class="list-name">Chaise</div>
                                             <div class="prolistdesc"></div>
                                         </a>
                                     </li>
                                     <li class="incate product-item">
-                                        <a href="https://www.fecpos.com/us/category-Monitor-monitor.html" class="product-list-content" title="table">
+                                        <a href="categorie.php?id=3" class="product-list-content" title="table">
                                             <div class="listimg"><img src="img\table.jpg" border="0" alt="Monitor" /></div>
                                             <div class="list-name">table</div>
                                             <div class="prolistdesc"></div>
                                         </a>
                                     </li>
                                     <li class="incate product-item">
-                                        <a href="https://www.fecpos.com/us/category-Peripherals-peripherals.html" class="product-list-content" title="Peripherals">
+                                        <a href="categorie.php?id=4" class="product-list-content" title="Peripherals">
                                             <div class="listimg"><img src="img\table.jpg" border="0" alt="Peripherals" /></div>
                                             <div class="list-name">test</div>
                                             <div class="prolistdesc"></div>
