@@ -74,6 +74,11 @@ include 'sql.php';
 
                             <li id="m7"><a href="connexion.php">Connexion</a>
                             </li>
+
+                            <div id="company_logo">
+                        <a href="http://localhost/fil-rouge/panier.php"><img width="50" height="50" src="http://localhost/fil-rouge/img/oip.png"></a>
+                    </div>
+
                         </ul>
                     </div>
                 </div>
