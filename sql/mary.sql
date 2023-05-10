@@ -1,7 +1,7 @@
 INSERT INTO produit (id_produit, lib_produit_fr, lib_produit, prix_produit, stock, description_fr, description, id_mat_fr, id_cat) 
 VALUES 
-(31,'Heureuse', 'Happy', 9.99, 50, 'Cette humeur se caractérise par une sensation de bonheur et de satisfaction.', 'This mood is characterized by a feeling of happiness and satisfaction.', 1, 4),
-(32,'Triste', 'Sad', 9.99, 30, 'Cette humeur se caractérise par une sensation de tristesse et de désespoir.', 'This mood is characterized by a feeling of sadness and despair.', 1, 4),
+(31,'Pichasse', 'Bitch', 9.99, 50, 'Cette humeur se caractérise par une sensation de poser pour des photos instas.', 'This mood is characterized by a feeling of bitch.', 1, 4),
+(32,'Pichasse 2.0', 'Bitch 2.0', 9.99, 30, 'Cette humeur se caractérise par une sensation de poser pour des photos instas.', 'This mood is characterized by a feeling of bitch.', 1, 4),
 (33,'Colérique', 'Angry', 9.99, 20, 'Cette humeur se caractérise par une sensation de colère et de frustration.', 'This mood is characterized by a feeling of anger and frustration.', 1, 4),
 (34,'Apaisée', 'Calm', 9.99, 40, 'Cette humeur se caractérise par une sensation de calme et de relaxation.', 'This mood is characterized by a feeling of calmness and relaxation.', 1, 4),
 (35,'Ennuyée', 'Bored', 9.99, 25, 'Cette humeur se caractérise par une sensation d ennui et de désintérêt.', 'This mood is characterized by a feeling of boredom and disinterest.', 1, 4),
