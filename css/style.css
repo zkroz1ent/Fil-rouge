@@ -344,3 +344,19 @@ legend.stepline-border {
   font-weight: bold;
   color: #888;
 }
+.produit-description {
+  border: 1px solid #ccc;
+  padding: 10px;
+}
+.bois {
+  position: fixed;
+  left: 70em;
+  background-image: url(../img/bois.jpg);
+  background-size: cover;
+  border: 5px solid #000;
+  padding: 20px;
+  margin-right: 500px;
+  color: #000000;
+}
+
+

@@ -36,20 +36,15 @@ $sql = "SELECT * FROM produit";
 
 ?>
 
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <title>Achat de produit</title>
-    <link rel="stylesheet" href="css/produit.css">
+<h1>Achat de produit : <?= $produit['lib_produit_fr'] ?></h1>
 
-</head>
-<body>
-    <h1>Achat de produit : <?= $produit['lib_produit_fr'] ?></h1>
-
+<div class="bois">
+    <h2>Description</h2>
     <p><?= $produit['description_fr'] ?></p>
 
-    <p>Prix : <?= $produit['prix_produit'] ?> €</p>
+
+
+<p>Prix : <?= $produit['prix_produit'] ?> €</p>
 
     <?php if (isset($messageConfirmation)) : ?>
         <p style="color: green"><?= $messageConfirmation ?></p>
@@ -65,8 +60,9 @@ $sql = "SELECT * FROM produit";
         <input type="number" name="quantite" id="quantite" min="1" max="<?= $produit['stock'] ?>" value="1">
         <button type="submit">Ajouter au panier</button>
     </form>
-
-<br><br>
+    </div>
+<br>
+<br>
 <br>
 <br>
 <br>
