@@ -105,29 +105,29 @@
                                 <ul class="product-list">
                                     <li class="incate product-item">
                                             <a href="categorie.php?id=1" class="product-list-content" title="Chaise">
-                                                <div class="listimg"><img src="img\chaise.jpg" border="0" alt="BOX System" /></div>
+                                                <div class="listimg"><img src="img\meuble1.jpg" border="0" alt="Chaise" /></div>
                                                 <div class="list-name">Chaise</div>
                                                 <div class="prolistdesc"></div>
                                             </a>
                                     </li>
                                     <li class="incate product-item">
                                         <a href="categorie.php?id=2" class="product-list-content" title="canape">
-                                            <div class="listimg"><img src="img\canape_roulette.jpg" border="0" alt="KIOSK" /></div>
+                                            <div class="listimg"><img src="img\meuble11.jpg" border="0" alt="KIOSK" /></div>
                                             <div class="list-name">canape</div>
                                             <div class="prolistdesc"></div>
                                         </a>
                                     </li>
                                     <li class="incate product-item">
                                         <a href="categorie.php?id=3" class="product-list-content" title="table">
-                                            <div class="listimg"><img src="img\table.jpg" border="0" alt="Monitor" /></div>
+                                            <div class="listimg"><img src="img\meuble21.jpg" border="0" alt="Monitor" /></div>
                                             <div class="list-name">table</div>
                                             <div class="prolistdesc"></div>
                                         </a>
                                     </li>
                                     <li class="incate product-item">
                                         <a href="categorie.php?id=4" class="product-list-content" title="Peripherals">
-                                            <div class="listimg"><img src="img\table.jpg" border="0" alt="Peripherals" /></div>
-                                            <div class="list-name">test</div>
+                                            <div class="listimg"><img src="img\mary.png" border="0" alt="Peripherals" /></div>
+                                            <div class="list-name">Lave-vaisselle</div>
                                             <div class="prolistdesc"></div>
                                         </a>
                                     </li>

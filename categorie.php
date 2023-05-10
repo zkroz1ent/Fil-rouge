@@ -10,19 +10,19 @@ $id = isset($_GET['id']) ? $_GET['id'] : NULL;
                 <ul class="product-list">
 <?php
 try{
-    $sel=$dbh->prepare("SELECT * FROM produit  WHERE :id=produit.id_cat");
+    $sel=$dbh->prepare("SELECT * FROM produit WHERE :id=produit.id_cat");
     $sel->execute(array(
     ':id' => $id
     ));
-    $produits = $sel->fetch(PDO::FETCH_ASSOC);
+    $produits = $sel->fetchAll(PDO::FETCH_ASSOC);
 }catch(PDOException $ex){
     die("Erreur lors de la requête SQL : " . $ex->getMessage());
 }
     foreach($produits AS $produit){
                     echo'<li class="incate product-item">';
-                        echo'<a href="produit.php?id='.$produit['id_produit'].'" class="product-list-content" title="Chaise">';
-                            echo'<div class="listimg"><img src="img\chaise'.$produit['id_produit'].'.jpg" border="0" alt="chaise" /></div>';
-                            echo'<div class="list-name">'.$produit['lib_produit'].'</div>';
+                        echo'<a href="produit.php?id_produit='.$produit['id_produit'].'" class="product-list-content" title="Chaise">';
+                            echo'<div class="listimg"><img src="img\meuble'.$produit['id_produit'].'.jpg" border="0" alt="meuble'.$produit['id_produit'].'"/></div>';
+                            echo'<div class="list-name">'.$produit['lib_produit_fr'].'</div>';
                             echo'<div class="prolistdesc"></div>';
                         echo'</a>';
                     echo'</li>';
