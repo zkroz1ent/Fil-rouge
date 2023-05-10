@@ -1,4 +1,4 @@
-<?php require 'header.php';  ?>
+<?php require 'header.php';  $i=0?>
 
 
 <?php
@@ -45,9 +45,9 @@ $sql = "SELECT * FROM produit";
 
 </head>
 <body>
-    <h1>Achat de produit : <?= $produit['lib_produit'] ?></h1>
+    <h1>Achat de produit : <?= $produit['lib_produit_fr'] ?></h1>
 
-    <p><?= $produit['description'] ?></p>
+    <p><?= $produit['description_fr'] ?></p>
 
     <p>Prix : <?= $produit['prix_produit'] ?> €</p>
 
@@ -66,19 +66,66 @@ $sql = "SELECT * FROM produit";
         <button type="submit">Ajouter au panier</button>
     </form>
 
-    <h2>Produits similaires</h2>
+<br><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 
-    <ul>
-        <?php foreach ($similaires as $similaire) : ?>
-            <li>
-                <a href="?id_produit=<?= $similaire['id_produit'] ?>">
-                    <?= $similaire['lib_produit'] ?>
-                </a>
-            </li>
-        <?php endforeach; ?>
-    </ul>
 
-  
+<div class="carousel">
+    <?php foreach ($similaires as $similaire) :$i++; ?>
+        
+        <div class="carousel-item">
+            <a href="?id_produit=<?= $similaire['id_produit'] ?>">
+                <img src="img\meuble<?= $i?>.jpg" alt="<?= $similaire['lib_produit'] ?>">
+                <h3><?= $similaire['lib_produit'] ?></h3>
+                <p>Prix : <?= $similaire['prix_produit'] ?> €</p>
+            </a>
+        </div>
+    <?php endforeach; ?>
+</div>
+
+
+<script>
+$(document).ready(function(){
+    $('.carousel').slick({
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        autoplay: true,
+        autoplaySpeed: 3000,
+        prevArrow: false,
+        nextArrow: '<button type="button" class="slick-next"><i class="fa fa-chevron-right"></i></button>',
+        responsive: [
+            {
+              breakpoint: 1024,
+              settings: {
+                slidesToShow: 2
+              }
+            },
+            {
+              breakpoint: 600,
+              settings: {
+                slidesToShow: 1
+              }
+            }
+        ]
+    });
+});
+
+</script>
 
    
 </body>
