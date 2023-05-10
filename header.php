@@ -24,6 +24,11 @@ error_reporting(E_ERROR | E_PARSE);
     <link rel="stylesheet" href="https://cdnresource.gtmc.app/magnific-popup/0.9.9/magnific-popup.min.css">
     <link rel="stylesheet" href="https://cdnresource.gtmc.app/swiper/4.5.1/css/swiper.min.css">
     <link rel="stylesheet" href="https://cdnresource.gtmc.app/iconfonts/fontawesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/jquery.slick/1.6.0/slick.css"/>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@glidejs/glide"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@glidejs/glide/dist/glide.min.js"></script>
 </head>
 
 <body>
