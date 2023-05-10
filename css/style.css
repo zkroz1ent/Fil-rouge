@@ -313,10 +313,11 @@ legend.stepline-border {
   display: initial;
 }
 .carousel {
-  position: relative;
+
   width: 50%;
   height: 500px;
   margin: 0 auto;
+  position: fixed;
 }
 
 .carousel-item {
@@ -343,6 +344,7 @@ legend.stepline-border {
   font-size: 1.1rem;
   font-weight: bold;
   color: #888;
+ 
 }
 .produit-description {
   border: 1px solid #ccc;
@@ -358,5 +360,6 @@ legend.stepline-border {
   margin-right: 500px;
   color: #000000;
 }
+
 
 
