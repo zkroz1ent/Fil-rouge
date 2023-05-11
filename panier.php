@@ -10,12 +10,10 @@ if (isset($_POST['add_to_cart'])) {
     $product_name = $_POST['product_name'];
     $product_price = $_POST['product_price'];
     $quantity = $_POST['quantity'];
-    
     // Si le panier n'existe pas encore, le créer
     if (!isset($_SESSION['cart'])) {
         $_SESSION['cart'] = array();
     }
-    
     // Vérifier si le produit est déjà dans le panier, si oui, augmenter la quantité, sinon, l'ajouter au panier
     $product_found = false;
     foreach ($_SESSION['cart'] as $key => $product) {
@@ -35,7 +33,6 @@ if (isset($_POST['add_to_cart'])) {
         );
     }
 }
-
 // Supprimer un produit du panier
 if (isset($_POST['remove_from_cart'])) {
     $product_id = $_POST['product_id'];
@@ -47,7 +44,6 @@ if (isset($_POST['remove_from_cart'])) {
         }
     }
 }
-
 // Afficher le contenu du panier
 $total_price = 0;
 if (isset($_SESSION['cart'])) {
@@ -74,14 +70,5 @@ if (isset($_SESSION['cart'])) {
     echo 'Votre panier est vide.';
 }
 ?>
-
-
-
 <h1>Bonjour <?= $_SESSION['user']['pseudo'] ;?></h1>
-
-
-
-
-
-
 <?php require 'footer.php';  ?>

@@ -114,7 +114,6 @@ if ($submit) {
             //Si 2 mdp identiques
             if ($password == $password2) {
                 //Lecture du pseudo et du mail dans la BDD pour comparer si ceux-ci existent déjà ou non
-               
                 try {
                     $sth = $dbh->prepare("SELECT * FROM utilisateur ");
                     $sth->execute();
@@ -149,10 +148,7 @@ if ($submit) {
                             ':mdp' => $password,
                             ':mail' =>   $mail,
                             ':pseudo' => $pseudo
-
                         ));
-
-
                     } catch (PDOException $ex) {
                         die("Erreur lors de la requête SQL : " . $ex->getMessage());
                     }
@@ -180,7 +176,6 @@ if ($submit) {
                     } catch (PDOException $ex) { //gestion des erreurs
                         die("Erreur lors de la requête SQL : " . $ex->getMessage());
                     }
-
                     $_SESSION['messages'] = array(
                         "inscription" => ["green", "Vous vous êtes bien inscrit !"]
                     );
