@@ -20,7 +20,6 @@ try {
 } catch (PDOException $ex) {
     die("Erreur lors de la requête SQL : " . $ex->getMessage());
 }
-
 $id_produit = 2;
 $sql = "SELECT * FROM produit";
 //Lecture des produits similaires dans la BDD 
@@ -33,12 +32,10 @@ try {
 } catch (PDOException $ex) {
     die("Erreur lors de la requête SQL : " . $ex->getMessage());
 }
-
 //Ajout du produit au panier
 if (isset($_POST['id_produit'])) {
     $id_produit = $_POST['id_produit'];
     echo   $quantite = $_POST['quantite'];
-
     //Vérification de la quantité disponible
     if ($quantite > $produit['stock']) {
         $messageErreur = "La quantité demandée est supérieure à la quantité disponible en stock.";
@@ -67,29 +64,19 @@ if (isset($_POST['id_produit'])) {
         $messageConfirmation = "Le produit a été ajouté au panier.";
     }
 }else{
-
-
-
-
 }
 ?>
-
 <h1>Achat de produit : <?= $produit['lib_produit_fr'] ?></h1>
-
 <div class="bois">
     <h2>Description</h2>
     <p><?= $produit['description_fr'] ?></p>
-
     <p>Prix : <?= $produit['prix_produit'] ?> €</p>
-
     <?php if (isset($messageConfirmation)) : ?>
         <p style="color: green"><?= $messageConfirmation ?></p>
     <?php endif; ?>
-
     <?php if (isset($messageErreur)) : ?>
         <p style="color: red"><?= $messageErreur ?></p>
     <?php endif; ?>
-
     <form method="post">
         <input type="hidden" name="id_produit" value="<?= $produit['id_produit'] ?>">
         <label for="quantite">Quantité :</label>
@@ -97,9 +84,7 @@ if (isset($_POST['id_produit'])) {
         <button type="submit">Ajouter au panier</button>
     </form>
 </div>
-
 <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-
 <div class="carouselle">
     <div class="carousel">
         <?php foreach ($similaires as $similaire) : $i++; ?>
@@ -114,7 +99,6 @@ if (isset($_POST['id_produit'])) {
         <?php endforeach; ?>
     </div>
 </div>
-
 <script>
     $(document).ready(function() {
         $('.carousel').slick({
@@ -140,5 +124,4 @@ if (isset($_POST['id_produit'])) {
         });
     });
 </script>
-
 <?php require 'footer.php'; ?>
