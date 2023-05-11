@@ -1,9 +1,6 @@
 
 <?php require 'header.php';
 
-
-
-
 //Détruit la variable user
 unset($_SESSION['user']);
 $_SESSION['messages'] = array(
@@ -11,12 +8,5 @@ $_SESSION['messages'] = array(
 );
 //Redirige vers l'accueil après la déconnexion
 header("Location: index.php");
-
-
-
-
-
-
-
 
 require 'footer.php';  ?>

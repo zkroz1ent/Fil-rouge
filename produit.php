@@ -1,40 +1,77 @@
-<?php require 'header.php';
-$i = 0 ?>
-
-
 <?php
-$id_produit = isset($_GET['id_produit']) ? $_GET['id_produit'] :  "";
+
+require 'header.php';
+$_SESSION['panier'][0]=$produitPanier = array(
+    'id_produit' => 1,
+    'lib_produit' => 'chaise noir',
+    'prix_produit' => 33,
+    'quantite' => 2
+);
+$id_produit = isset($_GET['id_produit']) ? $_GET['id_produit'] : "";
 $sql = "SELECT * FROM produit WHERE id_produit=:id_produit";
-//Lecture du pseudo dans la BDD 
+
+//Lecture du produit dans la BDD 
 try {
     $sth = $dbh->prepare($sql);
     $sth->execute(array(
         ':id_produit' => $id_produit
     ));
     $produit = $sth->fetch(PDO::FETCH_ASSOC);
-} //Gestion des erreurs
-catch (PDOException $ex) {
+} catch (PDOException $ex) {
     die("Erreur lors de la requête SQL : " . $ex->getMessage());
 }
 
-
-?>
-<?php
 $id_produit = 2;
 $sql = "SELECT * FROM produit";
-//Lecture du pseudo dans la BDD 
+//Lecture des produits similaires dans la BDD 
 try {
     $sth = $dbh->prepare($sql);
     $sth->execute(array(
         ':id_produit' => $id_produit
     ));
     $similaires = $sth->fetchAll(PDO::FETCH_ASSOC);
-} //Gestion des erreurs
-catch (PDOException $ex) {
+} catch (PDOException $ex) {
     die("Erreur lors de la requête SQL : " . $ex->getMessage());
 }
 
+//Ajout du produit au panier
+if (isset($_POST['id_produit'])) {
+    $id_produit = $_POST['id_produit'];
+    echo   $quantite = $_POST['quantite'];
 
+    //Vérification de la quantité disponible
+    if ($quantite > $produit['stock']) {
+        $messageErreur = "La quantité demandée est supérieure à la quantité disponible en stock.";
+    } else {
+        
+        //Vérification si le produit est déjà dans le panier
+        $produitExiste = false;
+   //    foreach ($_SESSION['panier'] as $key => $value) {
+   //        if ($value['id_produit'] == $id_produit) {
+   //            $_SESSION['panier'][$key]['quantite'] += $quantite;
+   //            $produitExiste = true;
+   //        }
+   //    }
+
+        //Ajout du produit au panier
+        if (!$produitExiste) {
+            $produitPanier = array(
+                'id_produit' => $id_produit,
+                'lib_produit' => $produit['lib_produit'],
+                'prix_produit' => $produit['prix_produit'],
+                'quantite' => $quantite
+            );
+            array_push($_SESSION['panier'], $produitPanier);
+        }
+
+        $messageConfirmation = "Le produit a été ajouté au panier.";
+    }
+}else{
+
+
+
+
+}
 ?>
 
 <h1>Achat de produit : <?= $produit['lib_produit_fr'] ?></h1>
@@ -42,8 +79,6 @@ catch (PDOException $ex) {
 <div class="bois">
     <h2>Description</h2>
     <p><?= $produit['description_fr'] ?></p>
-
-
 
     <p>Prix : <?= $produit['prix_produit'] ?> €</p>
 
@@ -62,24 +97,8 @@ catch (PDOException $ex) {
         <button type="submit">Ajouter au panier</button>
     </form>
 </div>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
 <div class="carouselle">
     <div class="carousel">
@@ -122,15 +141,4 @@ catch (PDOException $ex) {
     });
 </script>
 
-
-</body>
-
-</html>
-
-
-
-
-
-
-
-<?php require 'footer.php';  ?>
+<?php require 'footer.php'; ?>

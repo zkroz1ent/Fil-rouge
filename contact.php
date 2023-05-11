@@ -2,16 +2,12 @@
 $title = "Contact";
 require('header.php');
 require('sql.php'); ?>
-
 <div class="marge">
-
   <div class="center">
-
     <main id="main" role="main" class="main">
       <h1>Contact</h1>
-
       <form action="#" method="post">
-        <!-- Formulaire de contact -->
+        
         <p>
           <label for="nom">Nom</label>
           <input type="text" name="nom" id="nom" placeholder="Nom" required>
@@ -33,5 +29,4 @@ require('sql.php'); ?>
     </main>
   </div>
 </div>
-
 <?php require('footer.php'); ?> 

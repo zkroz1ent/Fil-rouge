@@ -1,5 +1,4 @@
 <?php
-
 $pseudo = isset($_POST['pseudo']) ? $_POST['pseudo'] :  '';
 $mail = isset($_POST['mail']) ? $_POST['mail'] :  '';
 $password = isset($_POST['password']) ? $_POST['password'] :  '';
@@ -13,17 +12,13 @@ $adresse3 = isset($_POST['adresse3']) ? $_POST['adresse3'] : '';
 $adresse4 = isset($_POST['adresse4']) ? $_POST['adresse4'] : '';
 $pays = isset($_POST['pays']) ? $_POST['pays'] : '';
 $num_telephone = isset($_POST['num_telephone']) ? $_POST['num_telephone'] : '';
-
 $typeutil = isset($_POST['role']) ? $_POST['role'] : '';
-
-
 $active = 3;
 $title = "Inscription";
 require('header.php');
 $page = $_SERVER['PHP_SELF'];
 logToDisk($page, '', '');
 include 'sql.php'; ?>
- 
 <div class="center">
     <h1>S'inscrire</h1>
     <form class="form" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
@@ -93,10 +88,7 @@ include 'sql.php'; ?>
         </table>
     </form>
 </div>
-
 <?php
-
-
 $pseudo = isset($_POST['pseudo']) ? $_POST['pseudo'] :  '';
 $mail = isset($_POST['mail']) ? $_POST['mail'] :  '';
 $password = isset($_POST['password']) ? $_POST['password'] :  '';
@@ -112,7 +104,6 @@ $submit = isset($_POST['submit']);
 $containsLetter  = preg_match('/[a-zA-Z]/',    $password);
 $containsDigit   = preg_match('/\d/',          $password);
 $containsSpecial = preg_match('/[^a-zA-Z\d]/', $password);
-
 $containsAll = $containsLetter && $containsDigit && $containsSpecial;
 //Si l'user a cliqué sur submit
 if ($submit) {
@@ -135,7 +126,6 @@ if ($submit) {
                 //Si le mail ou le pseudo n'existe pas déjà alors on peut s'inscrire
                 $verifmail=0 ;
                 $verifpseudo=0 ;
-
                 foreach ($users as $user){
 
                  if($user['mail'] == $mail){
@@ -146,14 +136,11 @@ if ($submit) {
 
                     $verifpseudo=1 ;
                  }
-
                 }
                 if ( $verifmail == 0 || $verifpseudo == 0 ) {
                     //On crypte le mdp
                     $password = password_hash($password, PASSWORD_BCRYPT);
                     //On insère les champs saisis dans la BDD avec la requête SQL
-
-
                     try {        //insertion de l'utilsateur   
                         $req = $dbh->prepare('INSERT INTO utilisateur(pseudo, mdp, mail,nom,prenom ) VALUES(:pseudo ,:mdp ,:mail ,:nom,:prenom)');
                         $req->execute(array(
@@ -169,8 +156,6 @@ if ($submit) {
                     } catch (PDOException $ex) {
                         die("Erreur lors de la requête SQL : " . $ex->getMessage());
                     }
-
-
                     //affichage du tableau
                     try {
                         $requser = $dbh->prepare("SELECT * FROM utilisateur WHERE mail = :mail");
@@ -179,8 +164,6 @@ if ($submit) {
                     } catch (PDOException $e) {
                         die("<p>Erreur lors de la requête SQL : " . $e->getMessage() . "</p>");
                     }
-
-                   
                     try {
                         $req = $dbh->prepare('INSERT INTO  adherent ( `adresse1`, `adresse2`, `adresse3`, `adresse4`, `Pays`, `num_telephone`, `id_utilisateur`) VALUES (:adresse1 ,:adresse2 ,:adresse3,:adresse4,:pays,:num_telephone,:id_utilisateur) ');
                         $req->execute(array(
@@ -191,7 +174,6 @@ if ($submit) {
                             ':pays' => $pays,
                             ':num_telephone' => $num_telephone,
                             ':id_utilisateur' => $userinfo['id_utilisateur']
-                            
                         ));
                         //  echo 'enregistrement effectué !';
                         // header('Location:connexion.php');
@@ -202,7 +184,6 @@ if ($submit) {
                     $_SESSION['messages'] = array(
                         "inscription" => ["green", "Vous vous êtes bien inscrit !"]
                     );
-
                     header("Location: connexion.php");
                 } //Conditions où la connexion échoue
                 else {
