@@ -47,6 +47,7 @@
   transition: background 0.3s ease, -webkit-transform 400ms ease;
   transition: background 0.3s ease, transform 400ms ease;
   transition: background 0.3s ease, transform 400ms ease, -webkit-transform 400ms ease;
+  z-index: 9999;
 }
 
 #index_header #mainnav-wrap {
@@ -802,10 +803,10 @@
   position: relative;
   width: 100%;
   padding-top: 100%;
-  background: rgb(180 67 67 / 20%);
+  background: rgba(255, 255, 255, 0.2);
   border-radius: 15px;
   text-align: center;
-  color: #FFF;
+  color: #000000;
   font-weight: bold;
   -webkit-transition: background 0.6s ease;
   transition: background 0.6s ease;
@@ -826,10 +827,10 @@
 #index-mainimage .mainimage-menu .mainimage-item > a .mainimage-line {
   display: block;
   position: absolute;
-  top: 8px;
+  top: 210px;
   bottom: 8px;
-  left: 8px;
-  right: 8px;
+  left: 0px;
+  right: 0px;
   border-radius: 15px;
   border: 1px solid white;
   -webkit-box-shadow: 0px 0px 2px 1px rgba(255, 255, 255, 0.1), 0px 0px 3px 1px rgba(128, 128, 128, 0.1) inset;
@@ -972,7 +973,11 @@
 }
 
 .banner_noTop #index_header #mainnav-wrap {
-  opacity: 1;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 9999;
 }
 
 .banner_noTop .sider-header#index_header #hello_member > ul > li > a {
@@ -988,4 +993,16 @@
 .banner_noTop #company_logo {
   -webkit-transform: translateY(0);
           transform: translateY(0);
+}
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+}
+
+#meubles {
+  position: relative;
+  z-index: 1;
 }
