@@ -9,7 +9,6 @@
                             <div class="wordContent"><img src="http://localhost/fil-rouge/img/gris.png"></div>
                         </div>
                         <ul class="mainimage-menu">
-
                             <li class="mainimage-item">
                                 <a href="categorie.php?id=1" class="product-list-content" title="Chaise">
                                     <div class="listimg"><img src="img\meuble1.jpg" alt="Chaise" /></div>
@@ -24,7 +23,6 @@
                                     <div class="listimg"><img src="img\meuble11.jpg" border="0" alt="KIOSK" /></div>
                                     <div class="list-name">canape</div>
                                     <div class="prolistdesc"></div>
-
                                     <span class="mainimage-line"></span>
                                 </a>
                             </li>
@@ -33,12 +31,10 @@
                                     <div class="listimg"><img src="img\meuble21.jpg" border="0" alt="Monitor" /></div>
                                     <div class="list-name">table</div>
                                     <div class="prolistdesc"></div>
-
                                     <span class="mainimage-line"></span>
                                 </a>
                             </li>
                             <li class="mainimage-item">
-
                                 <a href="categorie.php?id=4" class="product-list-content" title="Peripherals">
                                     <div class="listimg"><img src="img\mary.png" border="0" alt="Peripherals" /></div>
                                     <div class="list-name">Mary</div>
@@ -47,7 +43,6 @@
                                     <span class="mainimage-line"></span>
                                 </a>
                             </li>
-
                         </ul>
                         <div class="image-finger">
                             <img src="img/fec_hand.png">

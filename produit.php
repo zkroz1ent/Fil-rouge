@@ -40,7 +40,6 @@ if (isset($_POST['id_produit'])) {
     if ($quantite > $produit['stock']) {
         $messageErreur = "La quantité demandée est supérieure à la quantité disponible en stock.";
     } else {
-        
         //Vérification si le produit est déjà dans le panier
         $produitExiste = false;
    //    foreach ($_SESSION['panier'] as $key => $value) {
@@ -49,7 +48,6 @@ if (isset($_POST['id_produit'])) {
    //            $produitExiste = true;
    //        }
    //    }
-
         //Ajout du produit au panier
         if (!$produitExiste) {
             $produitPanier = array(
@@ -93,7 +91,6 @@ if (isset($_POST['id_produit'])) {
 <div class="carouselle">
     <div class="carousel">
         <?php foreach ($similaires as $similaire) : $i++; ?>
-
             <div class="carousel-item">
                 <a href="?id_produit=<?= $similaire['id_produit'] ?>">
                     <img src="img\meuble<?= $i ?>.jpg" alt="<?= $similaire['lib_produit'] ?>">
