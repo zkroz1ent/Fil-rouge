@@ -9,7 +9,7 @@ $_SESSION['panier'][0]=$produitPanier = array(
 );
 $id_produit = isset($_GET['id_produit']) ? $_GET['id_produit'] : "";
 $sql = "SELECT * FROM produit WHERE id_produit=:id_produit";
-
+$i = 0;
 //Lecture du produit dans la BDD 
 try {
     $sth = $dbh->prepare($sql);
@@ -67,22 +67,27 @@ if (isset($_POST['id_produit'])) {
 }
 ?>
 <h1>Achat de produit : <?= $produit['lib_produit_fr'] ?></h1>
-<div class="bois">
-    <h2>Description</h2>
-    <p><?= $produit['description_fr'] ?></p>
-    <p>Prix : <?= $produit['prix_produit'] ?> €</p>
-    <?php if (isset($messageConfirmation)) : ?>
-        <p style="color: green"><?= $messageConfirmation ?></p>
-    <?php endif; ?>
-    <?php if (isset($messageErreur)) : ?>
-        <p style="color: red"><?= $messageErreur ?></p>
-    <?php endif; ?>
-    <form method="post">
-        <input type="hidden" name="id_produit" value="<?= $produit['id_produit'] ?>">
-        <label for="quantite">Quantité :</label>
-        <input type="number" name="quantite" id="quantite" min="1" max="<?= $produit['stock'] ?>" value="1">
-        <button type="submit">Ajouter au panier</button>
-    </form>
+<div class="produit-div">
+    <div class="image-div">
+        <img src="img\meuble<?= $id_produit ?>.jpg" width="300" height="400" alt="<?= $similaire['lib_produit'] ?>">
+    </div>
+    <div class=texte-div>
+        <h2>Description</h2>
+        <p><?= $produit['description_fr'] ?></p>
+        <p>Prix : <?= $produit['prix_produit'] ?> €</p>
+        <?php if (isset($messageConfirmation)) : ?>
+            <p style="color: green"><?= $messageConfirmation ?></p>
+        <?php endif; ?>
+        <?php if (isset($messageErreur)) : ?>
+            <p style="color: red"><?= $messageErreur ?></p>
+        <?php endif; ?>
+        <form method="post">
+            <input type="hidden" name="id_produit" value="<?= $produit['id_produit'] ?>">
+            <label for="quantite">Quantité :</label>
+            <input type="number" name="quantite" id="quantite" min="1" max="<?= $produit['stock'] ?>" value="1">
+            <button type="submit">Ajouter au panier</button>
+        </form>
+    </div>
 </div>
 <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 <div class="carouselle">

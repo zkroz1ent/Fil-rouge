@@ -350,16 +350,27 @@ legend.stepline-border {
   border: 1px solid #ccc;
   padding: 10px;
 }
-.bois {
-  position: fixed;
-  left: 70em;
+
+.produit-div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 20px;
+  align-content: center;
   background-image: url(../img/bois.jpg);
   background-size: cover;
-  border: 5px solid #000;
-  padding: 20px;
-  margin-right: 500px;
+  justify-content: center;
   color: #000000;
+  border: 5px solid #000;
 }
 
+.image-div {
+  margin-right: 20px;
+  padding-left: 200px;
+}
 
-
+.texte-div{
+  margin-right: 20px;
+  font-size: 20px;
+  font-weight: 500;
+}
