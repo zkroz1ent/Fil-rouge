@@ -1,12 +1,7 @@
 <?php
 
 require 'header.php';
-$_SESSION['panier'][0]=$produitPanier = array(
-    'id_produit' => 1,
-    'lib_produit' => 'chaise noir',
-    'prix_produit' => 33,
-    'quantite' => 2
-);
+
 $id_produit = isset($_GET['id_produit']) ? $_GET['id_produit'] : "";
 $sql = "SELECT * FROM produit WHERE id_produit=:id_produit";
 $i = 0;

@@ -67,7 +67,7 @@ if (isset($_SESSION['panier'])) {
     echo '<tr><td colspan="3">Total:</td><td>' . $total_price . '€</td></tr>';
     echo '</table>';
 } else {
-    echo 'Votre panier est vide.';
+    echo '<h3>Votre panier est vide.</h3>';
 }
 ?>
 
