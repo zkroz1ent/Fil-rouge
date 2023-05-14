@@ -87,7 +87,7 @@ if (isset($_POST['id_produit'])) {
         </form>
     </div>
 </div>
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br>
 <div class="carouselle">
     <div class="carousel">
         <?php foreach ($similaires as $similaire) : $i++; ?>
