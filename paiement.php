@@ -90,12 +90,16 @@ $id_adherent = $sel->fetch(PDO::FETCH_COLUMN);
 </html>
 <?php 
         $submit=isset($_POST['submit']);
+		$card=isset($_POST['card']) ? $_POST['card'] :  "";
+		$exp=isset($_POST['exp']) ? $_POST['exp'] :  "";
         if ($submit) {
 			foreach ($_SESSION['panier'] as $product) {
 				$id_produit = $product['id_produit'];
 				$quantite = $product['quantite'];
 				$sql2 = 'INSERT INTO commande(id_adherent, id_produit, nombre, date, statut_commande)
 				VALUES (:id_adherent, :id_produit, :quantite, DATE(), 1)';
+				$sql3 = 'INSERT INTO information_banquaire(num, date_expiration, id_adherent)
+				VALUES (:card, :exp, id_adherent)';
 			}
 		}
 ?>
