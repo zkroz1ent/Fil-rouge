@@ -54,9 +54,11 @@ include 'sql.php';
 
             // Ajouter le code HTML du produit
             productsHtml += '<div class="col-md-2">';
+            productsHtml += '<a href="produit.php?id_produit=' + product.id_produit + '">';
             productsHtml += '<img src="img/meuble'+ product.id_produit + '.jpg" alt="' + product.id_produit + '">';
             productsHtml += '<h5>' + product.lib_produit_fr + '</h5>';
             productsHtml += '<p>' + product.prix_produit + '€</p>';
+            productsHtml += '</a>';
             productsHtml += '</div>';
 
             // Si c'est le dernier produit de la ligne, fermer la ligne
@@ -126,6 +128,8 @@ include 'sql.php';
                             </div>
                         </ul>
                     </div>
+
+               
                     <div class="search-container">
                         <form onsubmit="search(); return false;">
                             <input type="text" id="search-input">
@@ -134,7 +138,7 @@ include 'sql.php';
 
                     </div>
 
-
+                    
 
 
                 </div>

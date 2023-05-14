@@ -1,7 +1,7 @@
 <?php
 
 require 'header.php';
-
+$page="produit.php";
 $id_produit = isset($_GET['id_produit']) ? $_GET['id_produit'] : "";
 $sql = "SELECT * FROM produit WHERE id_produit=:id_produit";
 $i = 0;
