@@ -1,4 +1,10 @@
-<?php require 'header.php';  ?>
+<?php
+
+require 'header.php';
+
+?>
+
+
 <body class="lanL">
     <div id="index_container" class="sb-site main-wrap">
         <div class="content-wrap">
@@ -123,4 +129,5 @@
 </body>
 <?php require('footer.php');
 print_r($_SESSION); ?>
+
 </html>
