@@ -1,7 +1,21 @@
+<?php require 'header.php';  ?>
+<?php
+$id_util = $_SESSION['user']['id_utilisateur'];
+$sql = 'SELECT id_adherent FROM adherent WHERE id_utilisateur=:id_util';
+try{
+	$sel = $dbh->prepare($sql);
+	$sel->execute(array(
+		':id_util' => $id_util
+	));
+}catch (PDOException $ex) {
+	die("Erreur lors de la requête SQL INSERT ligne : " . $ex->getMessage());
+}
+$id_adherent = $sel->fetch(PDO::FETCH_COLUMN);
+?>
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Payment Form</title>
+	<title>Formulaire de paiement</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<style>
@@ -45,6 +59,20 @@
 	</style>
 </head>
 <body>
+<?php
+	if (isset($_SESSION['panier'])) {
+		$total_price = 0;
+		foreach ($_SESSION['panier'] as $product) {
+			$prix_produit = $product['prix_produit'];
+			$quantite = $product['quantite'];
+			$total_produit = $prix_produit * $quantite;
+			$total_price += $total_produit;
+		}
+	} else {
+		echo "Votre panier est vide.";
+	}
+	?>
+	<h2>Montant de la commande : <?=$total_price?> </h2>
 <form class="form" action="paiement_validation.php" method="post">
 		<label for="name">Name:</label>
 		<input type="text" id="name" name="name" placeholder="Enter your name" required>
@@ -60,3 +88,15 @@
 	</form>
 </body>
 </html>
+<?php 
+        $submit=isset($_POST['submit']);
+        if ($submit) {
+			foreach ($_SESSION['panier'] as $product) {
+				$id_produit = $product['id_produit'];
+				$quantite = $product['quantite'];
+				$sql2 = 'INSERT INTO commande(id_adherent, id_produit, nombre, date, statut_commande)
+				VALUES (:id_adherent, :id_produit, :quantite, DATE(), 1)';
+			}
+		}
+?>
+<?php require 'footer.php';  ?>

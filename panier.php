@@ -67,6 +67,9 @@ if (isset($_SESSION['panier'])) {
     }
     echo '<tr><td colspan="3">Total:</td><td>' . $total_price . '€</td></tr>';
     echo '</table>';
+    echo '<div class=boutonach>';
+        echo '<a href="http://localhost/fil-rouge/paiement.php" class="achat-bouton">Passer commande</a>';
+    echo '</div>';
 } else {
     echo '<h3>Votre panier est vide.</h3>';
 }

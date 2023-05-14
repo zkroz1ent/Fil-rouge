@@ -397,3 +397,23 @@ legend.stepline-border {
   background-color: rgb(255, 0, 0);
   color: white;
 }
+
+.boutonach a {
+  display: inline-block;
+  border: none;
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 20px;
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 15px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.boutonach a:hover {
+  background-color: #0062cc;
+  color: white;
+}
