@@ -45,13 +45,14 @@ if (isset($_POST['remove_from_panier'])) {
     }
 }
 // Afficher le contenu du panier
+echo '<div class=paniertab>';
 $total_price = 0;
 if (isset($_SESSION['panier'])) {
     echo '<table>';
     echo '<tr><th>Produit</th><th>Prix</th><th>Quantité</th><th>Action</th></tr>';
     foreach ($_SESSION['panier'] as $product) {
         echo '<tr>';
-        echo '<td>' . $product['lib_produit_fr'] . '</td>';
+        echo '<td>' . $product['lib_produit'] . '</td>';
         echo '<td>' . $product['prix_produit'] . '€</td>';
         echo '<td>' . $product['quantite'] . '</td>';
         echo '<td>';
@@ -69,6 +70,7 @@ if (isset($_SESSION['panier'])) {
 } else {
     echo '<h3>Votre panier est vide.</h3>';
 }
+echo '</div';
 ?>
 
 <?php require 'footer.php';  ?>

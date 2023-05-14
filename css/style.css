@@ -374,3 +374,26 @@ legend.stepline-border {
   font-size: 20px;
   font-weight: 500;
 }
+
+.paniertab table, th, td {
+  border-style: solid;
+  border-width: 2px;
+  border-color: black;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* -- espacement et alignement dans les cellules -- */
+
+.paniertab th, td {
+  padding: 25px;
+  text-align: center;
+}
+
+/* -- Entête en inverse grisé -- */
+
+.paniertab th {
+  background-color: rgb(255, 0, 0);
+  color: white;
+}
