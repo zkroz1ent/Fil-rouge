@@ -51,7 +51,7 @@ if (isset($_SESSION['panier'])) {
     echo '<tr><th>Produit</th><th>Prix</th><th>Quantité</th><th>Action</th></tr>';
     foreach ($_SESSION['panier'] as $product) {
         echo '<tr>';
-        echo '<td>' . $product['lib_produit_fr'] . '</td>';
+        echo '<td>' . $product['lib_produit'] . '</td>';
         echo '<td>' . $product['prix_produit'] . '€</td>';
         echo '<td>' . $product['quantite'] . '</td>';
         echo '<td>';
