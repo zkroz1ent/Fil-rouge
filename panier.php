@@ -45,6 +45,7 @@ if (isset($_POST['remove_from_panier'])) {
     }
 }
 // Afficher le contenu du panier
+echo '<div class=paniertab>';
 $total_price = 0;
 if (isset($_SESSION['panier'])) {
     echo '<table>';
@@ -69,6 +70,7 @@ if (isset($_SESSION['panier'])) {
 } else {
     echo '<h3>Votre panier est vide.</h3>';
 }
+echo '</div';
 ?>
 
 <?php require 'footer.php';  ?>
