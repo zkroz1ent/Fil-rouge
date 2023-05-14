@@ -20,7 +20,6 @@ try {
 } catch (PDOException $ex) {
     die("Erreur lors de la requête SQL : " . $ex->getMessage());
 }
-$id_produit = 2;
 $sql = "SELECT * FROM produit";
 //Lecture des produits similaires dans la BDD 
 try {
