@@ -179,7 +179,9 @@ if ($submit) {
                     $_SESSION['messages'] = array(
                         "inscription" => ["green", "Vous vous êtes bien inscrit !"]
                     );
-                    header("Location: connexion.php");
+                    echo('<script>');
+                    echo('window.location.href = "connexion.php";');
+                  echo('</script>');
                 } //Conditions où la connexion échoue
                 else {
                     $_SESSION['messages'] = array("Password" => ["red", "Cet utilisateur ou mail existe déjà."]);

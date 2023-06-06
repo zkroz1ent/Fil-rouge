@@ -3,5 +3,7 @@ unset($_SESSION['user']);
 $_SESSION['messages'] = array(
     "deconnexion" => ["blue", "Vous vous êtes bien déconnecté"]
 );
-header("Location: index.php");
+echo('<script>');
+echo('window.location.href = "index.php";');
+echo('</script>');
 require 'footer.php';  ?>

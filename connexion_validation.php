@@ -35,15 +35,21 @@ if (strlen($pseudo) >= 0) {
                 "connexion" => ["green", "Vous vous êtes bien connecté"]
             );
             //Redirige vers l'accueil si connexion réussie
-            header("Location: index.php");
+            echo('<script>');
+            echo('window.location.href = "index.php";');
+          echo('</script>');
             //Conditions où la connexion échoue
         } else { // Message d'erreur lorsque les identifiants sont incorrects
             $_SESSION['messages'] = array("Account" => ["red", "Ces identifiants sont incorrects"]);
-            header("Location: connexion.php");
+            echo('<script>');
+            echo('window.location.href = "connexion.php";');
+          echo('</script>');
         }
     } else { // Message d'erreur lorsque le mdp est incorrect
         $_SESSION['messages'] = array("Password" => ["red", "Vous avez rentré un mot de passe incorrect"]);
-        header("Location: connexion.php");
+        echo('<script>');
+        echo('window.location.href = "connexion.php";');
+      echo('</script>');
     }
 }
 

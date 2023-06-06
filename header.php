@@ -27,58 +27,57 @@ include 'sql.php';
 </div>
 
 <script>
-  function search() {
-    // Récupérer la valeur de la recherche
-    var query = document.getElementById("search-input").value;
+    function search() {
+        // Récupérer la valeur de la recherche
+        var query = document.getElementById("search-input").value;
 
-    // Envoyer une requête AJAX pour récupérer les résultats
-    var xhr = new XMLHttpRequest();
-    xhr.open("GET", "recherche-produits.php?search=" + query, true);
-    xhr.onreadystatechange = function() {
-    if (xhr.readyState == 4 && xhr.status == 200) {
-        // Récupérer les résultats de la recherche
-        var products = JSON.parse(xhr.responseText);
+        // Envoyer une requête AJAX pour récupérer les résultats
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", "recherche-produits.php?search=" + query, true);
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                // Récupérer les résultats de la recherche
+                var products = JSON.parse(xhr.responseText);
 
-        // Créer une variable pour stocker le code HTML des produits
-        var productsHtml = '';
+                // Créer une variable pour stocker le code HTML des produits
+                var productsHtml = '';
 
-        // Parcourir la liste des produits et construire le HTML correspondant
-        for (var i = 0; i < products.length; i++) {
-            var product = products[i];
-            var imageSrc = 'chemin/vers/image/' + product.id_produit + '.jpg';
+                // Parcourir la liste des produits et construire le HTML correspondant
+                for (var i = 0; i < products.length; i++) {
+                    var product = products[i];
+                    var imageSrc = 'chemin/vers/image/' + product.id_produit + '.jpg';
 
-            // Si c'est le premier produit de la ligne, ouvrir une nouvelle ligne
-            if (i % 5 == 0) {
-                productsHtml += '<div class="row">';
+                    // Si c'est le premier produit de la ligne, ouvrir une nouvelle ligne
+                    if (i % 5 == 0) {
+                        productsHtml += '<div class="row">';
+                    }
+
+                    // Ajouter le code HTML du produit
+                    productsHtml += '<div class="col-md-2">';
+                    productsHtml += '<a href="produit.php?id_produit=' + product.id_produit + '">';
+                    productsHtml += '<img src="img/meuble' + product.id_produit + '.jpg" alt="' + product.id_produit + '">';
+                    productsHtml += '<h5>' + product.lib_produit_fr + '</h5>';
+                    productsHtml += '<p>' + product.prix_produit + '€</p>';
+                    productsHtml += '</a>';
+                    productsHtml += '</div>';
+
+                    // Si c'est le dernier produit de la ligne, fermer la ligne
+                    if (i % 5 == 4 || i == products.length - 1) {
+                        productsHtml += '</div>';
+                    }
+                }
+
+                // Afficher les résultats dans la modale
+                var modalBody = document.querySelector(".modal-body");
+                modalBody.innerHTML = productsHtml;
+
+                // Ouvrir la modale
+                $('#myModal').modal('show');
             }
+        };
 
-            // Ajouter le code HTML du produit
-            productsHtml += '<div class="col-md-2">';
-            productsHtml += '<a href="produit.php?id_produit=' + product.id_produit + '">';
-            productsHtml += '<img src="img/meuble'+ product.id_produit + '.jpg" alt="' + product.id_produit + '">';
-            productsHtml += '<h5>' + product.lib_produit_fr + '</h5>';
-            productsHtml += '<p>' + product.prix_produit + '€</p>';
-            productsHtml += '</a>';
-            productsHtml += '</div>';
-
-            // Si c'est le dernier produit de la ligne, fermer la ligne
-            if (i % 5 == 4 || i == products.length - 1) {
-                productsHtml += '</div>';
-            }
-        }
-
-        // Afficher les résultats dans la modale
-        var modalBody = document.querySelector(".modal-body");
-        modalBody.innerHTML = productsHtml;
-
-        // Ouvrir la modale
-        $('#myModal').modal('show');
+        xhr.send();
     }
-};
-
-    xhr.send();
-}
-
 </script>
 
 
@@ -128,19 +127,12 @@ include 'sql.php';
                             </div>
                         </ul>
                     </div>
-
-               
                     <div class="search-container">
                         <form onsubmit="search(); return false;">
                             <input type="text" id="search-input">
                             <button type="submit">Rechercher</button>
                         </form>
-
                     </div>
-
-                    
-
-
                 </div>
             </div>
         </div>

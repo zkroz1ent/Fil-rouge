@@ -57,7 +57,7 @@ $id_adherent = $sel->fetch(PDO::FETCH_COLUMN);
 			font-size: 16px;
 		}
 	</style>
-</head>
+
 <body>
 <?php
 	if (isset($_SESSION['panier'])) {
@@ -73,7 +73,7 @@ $id_adherent = $sel->fetch(PDO::FETCH_COLUMN);
 	}
 	?>
 	<h2>Montant de la commande : <?=$total_price?> </h2>
-<form class="form" action="paiement_validation.php" method="post">
+<form class="form" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
 		<label for="name">Name:</label>
 		<input type="text" id="name" name="name" placeholder="Enter your name" required>
 		<label for="email">Email:</label>
@@ -84,7 +84,7 @@ $id_adherent = $sel->fetch(PDO::FETCH_COLUMN);
 		<input type="month" id="exp" name="exp" required>
 		<label for="cvv">CVV:</label>
 		<input type="text" id="cvv" name="cvv" placeholder="Enter your CVV" required>
-		<input type="submit" value="Submit Payment">
+		<input type="submit" id="submit" name="submit" value="Submit Payment">
 	</form>
 </body>
 </html>
@@ -96,11 +96,35 @@ $id_adherent = $sel->fetch(PDO::FETCH_COLUMN);
 			foreach ($_SESSION['panier'] as $product) {
 				$id_produit = $product['id_produit'];
 				$quantite = $product['quantite'];
-				$sql2 = 'INSERT INTO commande(id_adherent, id_produit, nombre, date, statut_commande)
-				VALUES (:id_adherent, :id_produit, :quantite, DATE(), 1)';
+				$sql2 = 'INSERT INTO commande(id_adherent, id_produit, nombre, date, statut_commande)VALUES (:id_adherent, :id_produit, :quantite, NOW(), "1")';
 				$sql3 = 'INSERT INTO information_banquaire(num, date_expiration, id_adherent)
-				VALUES (:card, :exp, id_adherent)';
+				VALUES (:card, :exp, :id_adherent)';
+				try{
+					$req = $dbh->prepare($sql2);
+					$req->execute(array(
+						':id_adherent' => $id_adherent,
+						':id_produit' => $id_produit,
+						':quantite' => $quantite
+					));
+				}
+				catch(PDOException $ex){
+					die("Erreur lors de la requête SQL : " . $ex->getMessage());
+				}
+				try{
+					$req = $dbh->prepare($sql3);
+					$req->execute(array(
+						':card' => $card,
+						':exp' => $exp,
+						':id_adherent' => $id_adherent
+					));
+				}
+				catch(PDOException $ex){
+					die("Erreur lors de la requête SQL : " . $ex->getMessage());
+				}
 			}
+			echo('<script>');
+  			echo('window.location.href = "paiement_validation.php";');
+			echo('</script>');
 		}
 ?>
 <?php require 'footer.php';  ?>
