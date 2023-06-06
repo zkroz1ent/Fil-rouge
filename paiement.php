@@ -97,8 +97,6 @@ $id_adherent = $sel->fetch(PDO::FETCH_COLUMN);
 				$id_produit = $product['id_produit'];
 				$quantite = $product['quantite'];
 				$sql2 = 'INSERT INTO commande(id_adherent, id_produit, nombre, date, statut_commande)VALUES (:id_adherent, :id_produit, :quantite, NOW(), "1")';
-				$sql3 = 'INSERT INTO information_banquaire(num, date_expiration, id_adherent)
-				VALUES (:card, :exp, :id_adherent)';
 				try{
 					$req = $dbh->prepare($sql2);
 					$req->execute(array(
@@ -110,18 +108,20 @@ $id_adherent = $sel->fetch(PDO::FETCH_COLUMN);
 				catch(PDOException $ex){
 					die("Erreur lors de la requête SQL : " . $ex->getMessage());
 				}
-				try{
-					$req = $dbh->prepare($sql3);
-					$req->execute(array(
-						':card' => $card,
-						':exp' => $exp,
-						':id_adherent' => $id_adherent
-					));
-				}
-				catch(PDOException $ex){
-					die("Erreur lors de la requête SQL : " . $ex->getMessage());
-				}
 			}
+			$sql3 = 'INSERT INTO information_banquaire(num, date_expiration, id_adherent) VALUES (:card, :exp, :id_adherent)';
+			try{
+				$req = $dbh->prepare($sql3);
+				$req->execute(array(
+					':card' => $card,
+					':exp' => $exp,
+					':id_adherent' => $id_adherent
+				));
+			}
+			catch(PDOException $ex){
+				die("Erreur lors de la requête SQL : " . $ex->getMessage());
+			}
+			unset($_SESSION['panier']);
 			echo('<script>');
   			echo('window.location.href = "paiement_validation.php";');
 			echo('</script>');

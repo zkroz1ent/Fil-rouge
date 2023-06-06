@@ -113,13 +113,13 @@ include 'sql.php';
                     </div>
                     <div id="hello_member">
                         <ul class="nav nav-pills">
-                            <?php if (!$_SESSION['user']) { ?>
+                            <?php if (isset($_SESSION['user'])) { ?>
+                                <li id="m7" t><a href="deconnexion.php">Se deconnecter</a>
+                                </li>
+                            <?php } else { ?>
                                 <li id="m7" t><a href="inscription.php">Inscription</a>
                                 </li>
                                 <li id="m7"><a href="connexion.php">Connexion</a>
-                                </li>
-                            <?php } else { ?>
-                                <li id="m7" t><a href="deconnexion.php">Se deconnecter</a>
                                 </li>
                             <?php } ?>
                             <div id="company_logo">

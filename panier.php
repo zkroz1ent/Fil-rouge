@@ -3,7 +3,6 @@
 
 <?php
 
-print_r($_SESSION);
 // Ajouter un produit au panier
 if (isset($_POST['add_to_panier'])) {
     $id_produit = $_POST['id_produit'];
