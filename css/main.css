@@ -61,6 +61,7 @@ h2 {
     position: fixed;
     width: 100%;
     bottom: 0;
+    z-index: 9999;
 }
 .footer li a {
     display: block;
