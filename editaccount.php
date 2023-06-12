@@ -2,6 +2,7 @@
 
 <?php 
 $id_adherent = isset($_GET['id_adherent']) ? $_GET['id_adherent'] : "";
+$id_utilisateur = $_SESSION['user']['id_utilisateur'];
 $sql = "SELECT * FROM adherent WHERE id_adherent=:id_adherent";
 try{
 	$sel = $dbh->prepare($sql);
@@ -17,7 +18,7 @@ $sql2 = "SELECT * FROM utilisateur WHERE id_utilisateur=:id_utilisateur";
 try{
 	$sel = $dbh->prepare($sql2);
 	$sel->execute(array(
-		':id_utilisateur' => $_SESSION['user']['id_utilisateur']
+		':id_utilisateur' => $id_utilisateur
 	));
 }catch (PDOException $ex) {
 	die("Erreur lors de la requête SQL INSERT ligne : " . $ex->getMessage());
@@ -27,7 +28,7 @@ $utilisateur = $sel->fetch(PDO::FETCH_ASSOC);
 <body>
 <div class="center">
     <h1>S'inscrire</h1>
-    <form class="form" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+    <form class="form" action="editaccount.php?id_adherent=<?=$id_adherent?>" method="post">
         <table>
             <tr>
                 <td><label for="nom">Nom : </label></td>
@@ -88,17 +89,20 @@ $prenom = isset($_POST['prenom']) ? $_POST['prenom'] : '';
 $adresse1 = isset($_POST['adresse1']) ? $_POST['adresse1'] : '';
 $adresse2 = isset($_POST['adresse2']) ? $_POST['adresse2'] : '';
 $adresse3 = isset($_POST['adresse3']) ? $_POST['adresse3'] : '';
-$adresse = isset($_POST['adresse4']) ? $_POST['adresse4'] : '';
+$adresse4 = isset($_POST['adresse4']) ? $_POST['adresse4'] : '';
+$num_telephone = isset($_POST['num_telephone']) ? $_POST['num_telephone'] : '';
+$pays = isset($_POST['pays']) ? $_POST['pays'] : '';
 $submit = isset($_POST['submit']);
 //Si l'user a cliqué sur submit
 if ($submit) {
     try {        //insertion de l'utilsateur   
-        $req = $dbh->prepare('UPDATE utilisateur SET nom=:nom, prenom=:prenom, mail=:mail, pseudo=:pseudo');
+        $req = $dbh->prepare('UPDATE utilisateur SET nom=:nom, prenom=:prenom, mail=:mail, pseudo=:pseudo WHERE id_utilisateur=:id_utilisateur');
         $req->execute(array(
             ':nom' => $nom,
             ':prenom' => $prenom,
             ':mail' =>   $mail,
-            ':pseudo' => $pseudo
+            ':pseudo' => $pseudo,
+            ':id_utilisateur' => $id_utilisateur
         ));
     } catch (PDOException $ex) {
         die("Erreur lors de la requête SQL : " . $ex->getMessage());
@@ -119,6 +123,9 @@ if ($submit) {
     } catch (PDOException $ex) { //gestion des erreurs
         die("Erreur lors de la requête SQL : " . $ex->getMessage());
     }
+    echo('<script>');
+    echo('window.location.href = "settings.php";');
+    echo('</script>');
 }
 
 ?>
