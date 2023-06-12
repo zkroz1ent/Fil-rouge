@@ -672,7 +672,7 @@ fieldset[disabled] .btn-info:active,
 .btn-info.disabled.active,
 .btn-info[disabled].active,
 fieldset[disabled] .btn-info.active {
-  background-color: #bbbbbb;
+ background-color: #bbb9b9;
   border-color: #bbbbbb;
 }
 
