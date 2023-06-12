@@ -382,6 +382,7 @@ legend.stepline-border {
   border-collapse: collapse;
   margin-left: auto;
   margin-right: auto;
+  margin-bottom: 100px;
 }
 
 /* -- espacement et alignement dans les cellules -- */
