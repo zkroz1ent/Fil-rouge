@@ -92,17 +92,27 @@ $id_adherent = $sel->fetch(PDO::FETCH_COLUMN);
         $submit=isset($_POST['submit']);
 		$card=isset($_POST['card']) ? $_POST['card'] :  "";
 		$exp=isset($_POST['exp']) ? $_POST['exp'] :  "";
+		$SqlID = 'SELECT id_commande FROM commande WHERE id_commande = (SELECT MAX( id_commande )  AS idMax FROM commande)';
+		try{
+			$sel = $dbh->query($SqlID);
+		}catch (PDOException $ex) {
+			die("Erreur lors de la requête SQL INSERT ligne : " . $ex->getMessage());
+		}
+		$id_commande = $sel->fetch(PDO::FETCH_COLUMN);
+		$id_commande = $id_commande + 1;
+
         if ($submit) {
 			foreach ($_SESSION['panier'] as $product) {
 				$id_produit = $product['id_produit'];
 				$quantite = $product['quantite'];
-				$sql2 = 'INSERT INTO commande(id_adherent, id_produit, nombre, date, statut_commande)VALUES (:id_adherent, :id_produit, :quantite, NOW(), "1")';
+				$sql2 = 'INSERT INTO commande(id_adherent, id_produit, nombre, date, statut_commande, ID_commande) VALUES (:id_adherent, :id_produit, :quantite, NOW(), "1", :id_commande)';
 				try{
 					$req = $dbh->prepare($sql2);
 					$req->execute(array(
 						':id_adherent' => $id_adherent,
 						':id_produit' => $id_produit,
-						':quantite' => $quantite
+						':quantite' => $quantite,
+						':id_commande' => $id_commande
 					));
 				}
 				catch(PDOException $ex){

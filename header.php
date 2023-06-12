@@ -114,6 +114,7 @@ include 'sql.php';
                     <div id="hello_member">
                         <ul class="nav nav-pills">
                             <?php if (isset($_SESSION['user'])) { ?>
+                                <li id="m7"><a href="account.php">Mon compte</a></li>
                                 <li id="m7" t><a href="deconnexion.php">Se deconnecter</a>
                                 </li>
                             <?php } else { ?>
