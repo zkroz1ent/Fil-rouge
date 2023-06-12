@@ -39,7 +39,7 @@ $adherent = $sel->fetch(PDO::FETCH_ASSOC);
     <h3>Bonjour <?= $_SESSION['user']['pseudo']; ?></h3>
     <div class="paniertab">
     <table>
-        <tr><th>Nom</th><th>Prénom</th><th>Pseudo</th><th>Mail</th><th>Numéro de carte</th><th>Adresse</th><th>Modifier infos</th></tr>
+        <tr><th>Nom</th><th>Prénom</th><th>Pseudo</th><th>Mail</th><th>Numéro de carte</th><th>Adresse</th><th>Numéro téléphone</th><th>Modifier infos</th></tr>
         <tr>
             <td><?= $_SESSION['user']['nom']; ?></td>
             <td><?= $_SESSION['user']['prenom']; ?></td>
@@ -53,6 +53,7 @@ $adherent = $sel->fetch(PDO::FETCH_ASSOC);
                 <?=$adherent['adresse4'];?><br>
                 <?=$adherent['Pays'];?>
             </td>
+            <td><?=$adherent['num_telephone'];?></td>
             <td><a href="editaccount.php?id_adherent=<?=$id_adherent?>">Modifier</a></td>
         </tr>
     </table>
