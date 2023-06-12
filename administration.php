@@ -54,7 +54,7 @@ if ($_SESSION['user']['role'] == 1) {
 
 
 
-?><h1>Accees non autorise</h1><?php
+?><h1>Accés non autorisé</h1><?php
 
 
 
