@@ -36,6 +36,7 @@
 
 <body>
 	<h1>Votre achat a été confirmé !</h1>
+	<a href="index.php">Retour à l'accueil</a>
 	<div id="mascotte">
 		<img src="img\mange.jpg" alt="Mascotte de l'entreprise">
 	</div>

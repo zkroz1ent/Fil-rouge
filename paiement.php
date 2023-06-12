@@ -122,6 +122,7 @@ $id_adherent = $sel->fetch(PDO::FETCH_COLUMN);
 				die("Erreur lors de la requête SQL : " . $ex->getMessage());
 			}
 			unset($_SESSION['panier']);
+			$_SESSION['panier'] = array();
 			echo('<script>');
   			echo('window.location.href = "paiement_validation.php";');
 			echo('</script>');
