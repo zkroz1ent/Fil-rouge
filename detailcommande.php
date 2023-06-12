@@ -14,7 +14,7 @@ $commandes = $sel->fetchAll(PDO::FETCH_ASSOC);
 
 echo '<div class=paniertab>';
 echo '<table>';
-echo '<tr><th>ID_Commande</th><th>Nom produit<th>Nombre</th><th>Prix unité</th><th>Prix total</th><th>Date</th><th>Statut</th></tr>';
+echo '<tr><th>ID_Commande</th><th>Nom produit<th>Nombre</th><th>Prix unité</th><th>Prix total</th><th>Date</th><th>Statut</th><th>Impression</th></tr>';
 foreach ($commandes as $commande) {
     $sql2 = "SELECT * FROM produit WHERE id_produit=:id_produit";
     try{
@@ -33,7 +33,9 @@ foreach ($commandes as $commande) {
     echo '<td>' . $produit['prix_produit'] . '</td>';
     echo '<td>' . $commande['nombre']*$produit['prix_produit'] . '</td>';
     echo '<td>' . $commande['date'] . '</td>';
-    echo '<td>' . $commande['statut_commande'] . '</td>';
+    
+    echo '<td> En cours</td>';
+    echo '<td><a href="facture_pdf.php?id_commande='.$commande['ID_commande'].'">Imprimer</td>';
     echo '</tr>';
 }
 echo '</table>';

@@ -82,9 +82,10 @@ h2 {
 }
 .center {
     text-align: center;
-    margin-top: 60px;
+    margin-top: 100px;
     margin-left: auto;
     margin-right: auto;
+    margin-bottom: 100px;
     width: 50%;
     border: 3px solid rgb(0, 66, 128);
     padding: 10px;

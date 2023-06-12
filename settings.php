@@ -50,11 +50,10 @@ $adherent = $sel->fetch(PDO::FETCH_ASSOC);
                 <?=$adherent['adresse1'];?><br>
                 <?=$adherent['adresse2'];?><br>
                 <?=$adherent['adresse3'];?><br>
+                <?=$adherent['adresse4'];?><br>
                 <?=$adherent['Pays'];?>
             </td>
-            <td><form method="post" action="editaccount.php">
-            <input type="hidden" name="mdp" value="">
-            <input type="submit" name="edit_mdp" value="Modifier"></td>
+            <td><a href="editaccount.php?id_adherent=<?=$id_adherent?>">Modifier</a></td>
         </tr>
     </table>
     </div>
