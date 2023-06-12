@@ -44,16 +44,10 @@ $utilisateur = $sel->fetch(PDO::FETCH_ASSOC);
             <tr>
                 <td><label for="mail">Email : </label></td>
                 <td><input type="text" id="mail" name="mail" value="<?php echo $utilisateur['mail']; ?>"></td>
-            </tr>
-            <tr>
-            
-                <td><label for="password">Mot de passe : <br> au moins 8 char , 1  MAJ , un chiffre 1 char special</label></td>
-                <td><input type="password" id="password" name="password" value="<?php echo $password2; ?>"></td>
-            </tr>
-        
+            </tr>       
             <tr>
                 <td><label for="num_telephone">num_telephone : </label></td>
-                <td><input type="text" id="num_telephone" name="num_telephone" value="<?php echo $utilisateur['num_telephone']; ?>"></td>
+                <td><input type="text" id="num_telephone" name="num_telephone" value="<?php echo $adherent['num_telephone']; ?>"></td>
             </tr>
             </tr>
             <tr>
