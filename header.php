@@ -113,16 +113,25 @@ include 'sql.php';
                     </div>
                     <div id="hello_member">
                         <ul class="nav nav-pills">
-                            <?php if (isset($_SESSION['user'])) { ?>
+                            <?php if (isset($_SESSION['user'])) {if ($_SESSION['user']['role'] == '1') {
+                                ?>
+                                    <li id="m7"><a href="administration.php">administration</a>
+                                    </li>
+                            <?php
+                                } ?>
                                 <li id="m7"><a href="account.php">Mon compte</a></li>
                                 <li id="m7" t><a href="deconnexion.php">Se deconnecter</a>
                                 </li>
-                            <?php } else { ?>
+                            <?php } else { $_SESSION['user']['role'] =array()?>
+                                
                                 <li id="m7" t><a href="inscription.php">Inscription</a>
                                 </li>
                                 <li id="m7"><a href="connexion.php">Connexion</a>
                                 </li>
-                            <?php } ?>
+
+                                <?php
+                                
+                            }  ?>
                             <div id="company_logo">
                                 <a href="http://localhost/fil-rouge/panier.php"><img width="50" height="50" src="http://localhost/fil-rouge/img/oip.png"></a>
                             </div>
