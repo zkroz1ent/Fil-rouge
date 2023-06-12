@@ -67,10 +67,6 @@ include 'sql.php'; ?>
                 <td><input type="text" id="adresse3" name="adresse3" value="<?php echo $adresse3; ?>"></td>
             </tr>
             <tr>
-                <td><label for="adresse4">code postal* : </label></td>
-                <td><input type="text" id="adresse4" name="adresse3" value="<?php echo $adresse4; ?>"></td>
-            </tr>
-            <tr>
                 <td><label for="pays">Pays* : </label></td>
                 <td><input type="text" id="pays" name="pays" value="<?php echo $pays; ?>"></td>
             </tr>
@@ -161,12 +157,11 @@ if ($submit) {
                         die("<p>Erreur lors de la requête SQL : " . $e->getMessage() . "</p>");
                     }
                     try {
-                        $req = $dbh->prepare('INSERT INTO  adherent ( `adresse1`, `adresse2`, `adresse3`, `adresse4`, `Pays`, `num_telephone`, `id_utilisateur`) VALUES (:adresse1 ,:adresse2 ,:adresse3,:adresse4,:pays,:num_telephone,:id_utilisateur) ');
+                        $req = $dbh->prepare('INSERT INTO  adherent ( `adresse1`, `adresse2`, `adresse3`, `Pays`, `num_telephone`, `id_utilisateur`) VALUES (:adresse1 ,:adresse2 ,:adresse3,:pays,:num_telephone,:id_utilisateur) ');
                         $req->execute(array(
                             ':adresse1' => $adresse1,
                             ':adresse2' => $adresse2,
                             ':adresse3' => $adresse3,
-                            ':adresse4' => $adresse4,
                             ':pays' => $pays,
                             ':num_telephone' => $num_telephone,
                             ':id_utilisateur' => $userinfo['id_utilisateur']

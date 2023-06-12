@@ -13,9 +13,13 @@ try{
 $id_adherent = $sel->fetch(PDO::FETCH_COLUMN);
 $sql2 = "SELECT ID_commande, date, ROUND(SUM(prix_produit * nombre),2) AS prix_total FROM commande, produit
 WHERE commande.id_produit = produit.id_produit 
-AND commande.ID_commande = commande.ID_commande GROUP BY commande.ID_commande;";
+AND commande.ID_commande = commande.ID_commande
+AND commande.ID_adherent = :id_adherent GROUP BY commande.ID_commande;";
 try{
-    $sel = $dbh->query($sql2);
+    $sel = $dbh->prepare($sql2);
+	$sel->execute(array(
+		':id_adherent' => $id_adherent
+	));
 }catch (PDOException $ex) {
     die("Erreur lors de la requête SQL SELECT ligne : " . $ex->getMessage());
 }

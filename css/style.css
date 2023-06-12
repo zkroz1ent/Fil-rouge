@@ -387,7 +387,7 @@ legend.stepline-border {
 
 /* -- espacement et alignement dans les cellules -- */
 
-.paniertab th, td {
+.paniertab td {
   padding: 25px;
   text-align: center;
 }
@@ -397,6 +397,8 @@ legend.stepline-border {
 .paniertab th {
   background-color: rgb(255, 0, 0);
   color: white;
+  padding: 25px;
+  text-align: center;
 }
 
 .boutonach a {

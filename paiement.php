@@ -11,6 +11,17 @@ try{
 	die("Erreur lors de la requête SQL INSERT ligne : " . $ex->getMessage());
 }
 $id_adherent = $sel->fetch(PDO::FETCH_COLUMN);
+
+$sql2 = 'SELECT num FROM information_banquaire WHERE id_adherent=:id_adherent';
+try{
+	$sel = $dbh->prepare($sql2);
+	$sel->execute(array(
+		':id_adherent' => $id_adherent
+	));
+}catch (PDOException $ex) {
+	die("Erreur lors de la requête SQL INSERT ligne : " . $ex->getMessage());
+}
+$num_banquaire = $sel->fetch(PDO::FETCH_COLUMN);
 ?>
 <!DOCTYPE html>
 <html>
@@ -105,9 +116,9 @@ $id_adherent = $sel->fetch(PDO::FETCH_COLUMN);
 			foreach ($_SESSION['panier'] as $product) {
 				$id_produit = $product['id_produit'];
 				$quantite = $product['quantite'];
-				$sql2 = 'INSERT INTO commande(id_adherent, id_produit, nombre, date, statut_commande, ID_commande) VALUES (:id_adherent, :id_produit, :quantite, NOW(), "1", :id_commande)';
+				$sql3 = 'INSERT INTO commande(id_adherent, id_produit, nombre, date, statut_commande, ID_commande) VALUES (:id_adherent, :id_produit, :quantite, NOW(), "1", :id_commande)';
 				try{
-					$req = $dbh->prepare($sql2);
+					$req = $dbh->prepare($sql3);
 					$req->execute(array(
 						':id_adherent' => $id_adherent,
 						':id_produit' => $id_produit,
@@ -118,9 +129,9 @@ $id_adherent = $sel->fetch(PDO::FETCH_COLUMN);
 				catch(PDOException $ex){
 					die("Erreur lors de la requête SQL : " . $ex->getMessage());
 				}
-				$sql3 = "UPDATE produit SET stock = stock - 1 WHERE id_produit = :id_produit;";
+				$sql4 = "UPDATE produit SET stock = stock - 1 WHERE id_produit = :id_produit;";
 				try{
-					$req = $dbh->prepare($sql3);
+					$req = $dbh->prepare($sql4);
 					$req->execute(array(
 						':id_produit' => $id_produit	
 					));
@@ -129,17 +140,19 @@ $id_adherent = $sel->fetch(PDO::FETCH_COLUMN);
 					die("Erreur lors de la requête SQL : " . $ex->getMessage());
 				}
 			}
-			$sql4 = 'INSERT INTO information_banquaire(num, date_expiration, id_adherent) VALUES (:card, :exp, :id_adherent)';
-			try{
-				$req = $dbh->prepare($sql4);
-				$req->execute(array(
-					':card' => $card,
-					':exp' => $exp,
-					':id_adherent' => $id_adherent
-				));
-			}
-			catch(PDOException $ex){
-				die("Erreur lors de la requête SQL : " . $ex->getMessage());
+			if($num_banquaire!=$card){
+			$sql5 = 'INSERT INTO information_banquaire(num, date_expiration, id_adherent) VALUES (:card, :exp, :id_adherent)';
+				try{
+					$req = $dbh->prepare($sql5);
+					$req->execute(array(
+						':card' => $card,
+						':exp' => $exp,
+						':id_adherent' => $id_adherent
+					));
+				}
+				catch(PDOException $ex){
+					die("Erreur lors de la requête SQL : " . $ex->getMessage());
+				}
 			}
 			unset($_SESSION['panier']);
 			$_SESSION['panier'] = array();
