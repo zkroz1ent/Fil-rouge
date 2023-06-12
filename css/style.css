@@ -414,7 +414,7 @@ legend.stepline-border {
   text-decoration: none;
   border-radius: 15px;
   margin-left: auto;
-  margin-right: auto;
+  margin-left: 49em;
 }
 
 .boutonach a:hover {
