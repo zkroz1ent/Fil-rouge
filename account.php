@@ -5,7 +5,9 @@ include "header.php"
 
 <body>
     <h3>Bonjour <?= $_SESSION['user']['pseudo']; ?></h3>
-    
+    <div style="text-align: center;"><a href="settings.php"><img src="img\settings.jpg" alt="settings"></a>
+    <a href="commandes.php"><img src="img\commande.png" alt="commandes"></a>
+    </div>
 </body>
 
 <?php
