@@ -108,10 +108,20 @@ $id_adherent = $sel->fetch(PDO::FETCH_COLUMN);
 				catch(PDOException $ex){
 					die("Erreur lors de la requête SQL : " . $ex->getMessage());
 				}
+				$sql3 = "UPDATE produit SET stock = stock - 1 WHERE id_produit = :id_produit;";
+				try{
+					$req = $dbh->prepare($sql3);
+					$req->execute(array(
+						':id_produit' => $id_produit	
+					));
+				}
+				catch(PDOException $ex){
+					die("Erreur lors de la requête SQL : " . $ex->getMessage());
+				}
 			}
-			$sql3 = 'INSERT INTO information_banquaire(num, date_expiration, id_adherent) VALUES (:card, :exp, :id_adherent)';
+			$sql4 = 'INSERT INTO information_banquaire(num, date_expiration, id_adherent) VALUES (:card, :exp, :id_adherent)';
 			try{
-				$req = $dbh->prepare($sql3);
+				$req = $dbh->prepare($sql4);
 				$req->execute(array(
 					':card' => $card,
 					':exp' => $exp,
