@@ -39,9 +39,7 @@ $commandes = $sel->fetchAll(PDO::FETCH_ASSOC);
             echo '<td>' . $commande['prix_total'] . '</td>';
             echo '<td>' . $commande['date'] . '</td>';
             echo '<td>';
-            echo '<form method="post" action="">';
-            echo '<input type="submit" name="print" value="imprimer">';
-            echo '</form>';
+            echo '<a href="detailcommande.php?id_commande='.$commande['ID_commande'].'">Voir détail</a>';
             echo '</td>';
             echo '</tr>';
         }
