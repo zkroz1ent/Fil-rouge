@@ -313,39 +313,33 @@ legend.stepline-border {
   display: initial;
 }
 .carousel {
-
-  width: 50%;
-  height: 500px;
-  margin: 0 auto;
-  position: fixed;
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
 }
 
 .carousel-item {
-  position: relative;
-  display: inline-block;
-  width: 25%;
-  height: 50%;
-  margin-right: -4px; /* pour enlever l'espace entre les items */
-  box-sizing: border-box;
+  flex: 0 0 auto;
+  margin-right: 10px;
 }
 
 .carousel-item img {
-  max-width: 50%;
-  max-height: 50%;
-  object-fit: cover;
+  max-width: 10em;
+  max-height: 10em;
+  width: auto;
+  height: auto;
 }
 
+
 .carousel-item h3 {
-  font-size: 1.2rem;
   margin-top: 10px;
+  font-size: 16px;
 }
 
 .carousel-item p {
-  font-size: 1.1rem;
-  font-weight: bold;
-  color: #888;
- 
+  font-size: 14px;
 }
+
 .produit-description {
   border: 1px solid #ccc;
   padding: 10px;
