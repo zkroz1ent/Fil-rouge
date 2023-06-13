@@ -127,7 +127,6 @@ if ($submit) {
     echo('window.location.href = "settings.php";');
     echo('</script>');
 }
-
 ?>
 
 </body>

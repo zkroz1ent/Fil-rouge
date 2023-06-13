@@ -34,8 +34,8 @@ foreach ($commandes as $commande) {
     echo '<td>' . $commande['nombre']*$produit['prix_produit'] . '</td>';
     echo '<td>' . $commande['date'] . '</td>';
     if($commande['statut_commande']==1){echo '<td>En cours</td>';}
-    if($commande['statut_commande']==2){echo '<td>Finalisé</td>';}
-    if($commande['statut_commande']==3){echo '<td>Annulé</td>';}
+    if($commande['statut_commande']==2){echo '<td>Finalisée</td>';}
+    if($commande['statut_commande']==3){echo '<td>Annulée</td>';}
     echo '<td><a href="facture_pdf.php?id_commande='.$commande['ID_commande'].'">Imprimer</td>';
     echo '</tr>';
 }
