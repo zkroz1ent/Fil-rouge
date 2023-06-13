@@ -123,9 +123,11 @@ include 'sql.php';
                                 <li id="m7"><a href="connexion.php">Connexion</a>
                                 </li>
                             <?php } ?>
+                            <?php if (isset($_SESSION['user'])) { ?>
                             <div id="company_logo">
                                 <a href="http://localhost/fil-rouge/panier.php"><img width="50" height="50" src="http://localhost/fil-rouge/img/oip.png"></a>
                             </div>
+                            <?php } ?>
                         </ul>
                     </div>
                     <div class="search-container">
