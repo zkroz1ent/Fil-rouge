@@ -370,7 +370,7 @@ legend.stepline-border {
 }
 
 .paniertab table, th, td {
-  border-style: solid;
+ 
   border-width: 2px;
   border-color: black;
   border-collapse: collapse;
@@ -415,3 +415,4 @@ legend.stepline-border {
   background-color: #0062cc;
   color: white;
 }
+

@@ -3,6 +3,7 @@
 session_start();
 include 'log/log.php';
 include 'sql.php';
+require_once 'script.php';
 //error_reporting(E_ERROR | E_PARSE);
 ?>
 <!-- Bouton pour ouvrir la modale -->

@@ -27,7 +27,7 @@ $utilisateur = $sel->fetch(PDO::FETCH_ASSOC);
 ?>
 <body>
 <div class="center">
-    <h1>S'inscrire</h1>
+    <h1>Modifier vos coordonnées</h1>
     <form class="form" action="editaccount.php?id_adherent=<?=$id_adherent?>" method="post">
         <table>
             <tr>

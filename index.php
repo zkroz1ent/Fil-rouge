@@ -71,46 +71,7 @@ require 'header.php';
                     </div>
                 </div>
             </div>
-            <div id="mainbanner">
-                <div class="container">
-                    <div class="row">
-                        <div class="span12 col-md-12">
-                            <div id="maincarousel" class="swiper-container swiper-banner index-banner">
-                                <div class="swiper-wrapper">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div id="content">
-                <div class="row">
-                </div>
-                <div id="index_cate" class="index_cate-section index-section">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <h3 class="text-left hidden"><a href="https://www.fecpos.com/us/product.html">Product Categories</a></h3>
-                                <ul class="product-list">
-                                    <li class="incate product-item">
-                                    </li>
-                                    <li class="incate product-item">
-                                    </li>
-                                    <li class="incate product-item">
-                                    </li>
-                                    <li class="incate product-item">
-                                    </li>
-                                </ul>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div id="index-solutions" class="solutions-section index-section">
-                </div>
-            </div>
-        </div>
-    </div>
+           
 
     <script type='text/javascript'>
         var ccs_cc_args = ccs_cc_args || [];
