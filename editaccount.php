@@ -93,9 +93,9 @@ $adresse4 = isset($_POST['adresse4']) ? $_POST['adresse4'] : '';
 $num_telephone = isset($_POST['num_telephone']) ? $_POST['num_telephone'] : '';
 $pays = isset($_POST['pays']) ? $_POST['pays'] : '';
 $submit = isset($_POST['submit']);
-//Si l'user a cliqué sur submit
+
 if ($submit) {
-    try {        //insertion de l'utilsateur   
+    try {          
         $req = $dbh->prepare('UPDATE utilisateur SET nom=:nom, prenom=:prenom, mail=:mail, pseudo=:pseudo WHERE id_utilisateur=:id_utilisateur');
         $req->execute(array(
             ':nom' => $nom,
@@ -107,7 +107,7 @@ if ($submit) {
     } catch (PDOException $ex) {
         die("Erreur lors de la requête SQL : " . $ex->getMessage());
     }
-    try {  // modification de l'adhérent
+    try {
         $req = $dbh->prepare('UPDATE adherent SET adresse1=:adresse1, adresse2=:adresse2, adresse3=:adresse3, adresse4=:adresse4, Pays=:pays, num_telephone=:num_telephone WHERE id_adherent=:id_adherent');
         $req->execute(array(
             ':adresse1' => $adresse1,
@@ -118,9 +118,7 @@ if ($submit) {
             ':num_telephone' => $num_telephone,
             ':id_adherent' => $id_adherent
         ));
-        //  echo 'enregistrement effectué !';
-        // header('Location:connexion.php');
-    } catch (PDOException $ex) { //gestion des erreurs
+    } catch (PDOException $ex) {
         die("Erreur lors de la requête SQL : " . $ex->getMessage());
     }
     echo('<script>');

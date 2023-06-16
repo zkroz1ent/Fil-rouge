@@ -5,7 +5,6 @@ $id_produit = isset($_GET['id_produit']) ? $_GET['id_produit'] : "";
 $sql = "SELECT * FROM produit WHERE id_produit=:id_produit";
 $i = 0;
 
-// Lecture du produit dans la BDD
 try {
     $sth = $dbh->prepare($sql);
     $sth->execute(array(
@@ -17,7 +16,6 @@ try {
 }
 
 $sql_similaires = "SELECT * FROM produit WHERE id_produit != :id_produit";
-// Lecture des produits similaires dans la BDD
 try {
     $sth_similaires = $dbh->prepare($sql_similaires);
     $sth_similaires->execute(array(
@@ -28,16 +26,13 @@ try {
     die("Erreur lors de la requête SQL : " . $ex->getMessage());
 }
 
-// Ajout du produit au panier
 if (isset($_POST['id_produit'])) {
     $id_produit = $_POST['id_produit'];
     $quantite = $_POST['quantite'];
 
-    // Vérification de la quantité disponible
     if ($quantite > $produit['stock']) {
         $messageErreur = "La quantité demandée est supérieure à la quantité disponible en stock.";
     } else {
-        // Vérification si le produit est déjà dans le panier
         $produitExiste = false;
         foreach ($_SESSION['panier'] as $key => $value) {
             if ($value['id_produit'] == $id_produit) {
@@ -45,7 +40,6 @@ if (isset($_POST['id_produit'])) {
                 $produitExiste = true;
             }
         }
-        // Ajout du produit au panier
         if (!$produitExiste) {
             $produitPanier = array(
                 'id_produit' => $id_produit,

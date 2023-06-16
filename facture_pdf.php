@@ -41,24 +41,23 @@ $pdf->SetSubject('badge', true);
 
 $pdf->AddPage();
 define('FPDF_FONTPATH', './font/');
-$pdf->AddFont('Calibri', '', 'Calibri_Regular.php'); //Regular
-$pdf->AddFont('Calibri', 'B', 'Calibri_bold.php'); //Bold
+$pdf->AddFont('Calibri', '', 'Calibri_Regular.php');
+$pdf->AddFont('Calibri', 'B', 'Calibri_bold.php');
 $pdf->Image('img/AIRNEIS.jpg', 0, 0, 210, 300);
 $pdf->setY(18);
 $pdf->setX(190);
 
 $pdf->SetFont('calibri', '', 11);
-$pdf->SetTextColor(0, 0, 0); // Noir
+$pdf->SetTextColor(0, 0, 0);
 $pdf->SetFont('', 'B');
-//NM ORDRE DE RECU
 
 $pdf->SetFillColor(255, 255, 255);
-$pdf->AddFont('Calibri', '', 'Calibri_Regular.php'); //Regular
-$pdf->AddFont('Calibri', 'B', 'Calibri_bold.php'); //Bold
+$pdf->AddFont('Calibri', '', 'Calibri_Regular.php');
+$pdf->AddFont('Calibri', 'B', 'Calibri_bold.php');
 
 
 $pdf->SetFont('Calibri', '', 11);
-$pdf->SetTextColor(0, 0, 0); // Noir
+$pdf->SetTextColor(0, 0, 0);
 
 $pdf->setY(35.5);
 $pdf->setX(28.5);
@@ -76,7 +75,7 @@ $pdf->Cell(35, 8, utf8_decode("N° " . $utilisateur["id_adherent"]), 0, 0, "L", 
 $pdf->setY(86);
 $pdf->setX(120);
 $pdf->SetFont('Calibri', '', 11);
-$pdf->SetTextColor(0, 0, 0); // Noir
+$pdf->SetTextColor(0, 0, 0);
 $pdf->Cell(35, 8, utf8_decode("NOM: " . $utilisateur["nom"]), 0, 0, "L", FALSE);
 $pdf->setY(90);
 $pdf->setX(120);
@@ -98,7 +97,7 @@ $pdf->setY(110);
 $pdf->setX(120);
 $pdf->Cell(35, 8, utf8_decode("Pays: " . $utilisateur["Pays"]), 0, 0, "L", FALSE);
 $pdf->SetFont('Calibri', 'B', 11);
-$pdf->SetTextColor(0, 0, 0); // Noir
+$pdf->SetTextColor(0, 0, 0);
 
 
 

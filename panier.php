@@ -3,17 +3,14 @@
 
 <?php
 
-// Ajouter un produit au panier
 if (isset($_POST['add_to_panier'])) {
     $id_produit = $_POST['id_produit'];
     $product_name = $_POST['product_name'];
     $prix_produit = $_POST['prix_produit'];
     $quantite = $_POST['quantite'];
-    // Si le panier n'existe pas encore, le créer
     if (!isset($_SESSION['panier'])) {
         $_SESSION['panier'] = array();
     }
-    // Vérifier si le produit est déjà dans le panier, si oui, augmenter la quantité, sinon, l'ajouter au panier
     $product_found = false;
     foreach ($_SESSION['panier'] as $key => $product) {
         if ($product['id_produit'] == $id_produit) {
@@ -32,7 +29,6 @@ if (isset($_POST['add_to_panier'])) {
         );
     }
 }
-// Supprimer un produit du panier
 if (isset($_POST['remove_from_panier'])) {
     $id_produit = $_POST['id_produit_delete'];
 
@@ -43,7 +39,6 @@ if (isset($_POST['remove_from_panier'])) {
         }
     }
 }
-// Afficher le contenu du panier
 echo '<div class=paniertab>';
 $total_price = 0;
 if (isset($_SESSION['panier'])) {

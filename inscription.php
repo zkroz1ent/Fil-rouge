@@ -101,24 +101,17 @@ $containsLetter  = preg_match('/[a-zA-Z]/',    $password);
 $containsDigit   = preg_match('/\d/',          $password);
 $containsSpecial = preg_match('/[^a-zA-Z\d]/', $password);
 $containsAll = $containsLetter && $containsDigit && $containsSpecial;
-//Si l'user a cliqué sur submit
 if ($submit) {
-    //Si pseudo sup à 8 carac.
     if (strlen($pseudo) >= 5) {
-        //Si mdp sup à 8 carac.
         if (strlen($password) >= 8 && $containsAll == true) {
-            //Si 2 mdp identiques
             if ($password == $password2) {
-                //Lecture du pseudo et du mail dans la BDD pour comparer si ceux-ci existent déjà ou non
                 try {
                     $sth = $dbh->prepare("SELECT * FROM utilisateur ");
                     $sth->execute();
                     $users = $sth->fetchAll(PDO::FETCH_ASSOC);
-                    //Gestion des erreurs
                 } catch (PDOException $ex) {
                     die("Erreur lors de la requête SQL : " . $ex->getMessage());
                 }
-                //Si le mail ou le pseudo n'existe pas déjà alors on peut s'inscrire
                 $verifmail=0 ;
                 $verifpseudo=0 ;
                 foreach ($users as $user){
@@ -133,10 +126,8 @@ if ($submit) {
                  }
                 }
                 if ( $verifmail == 0 || $verifpseudo == 0 ) {
-                    //On crypte le mdp
                     $password = password_hash($password, PASSWORD_BCRYPT);
-                    //On insère les champs saisis dans la BDD avec la requête SQL
-                    try {        //insertion de l'utilsateur   
+                    try {           
                         $req = $dbh->prepare('INSERT INTO utilisateur(pseudo, mdp, mail,nom,prenom ) VALUES(:pseudo ,:mdp ,:mail ,:nom,:prenom)');
                         $req->execute(array(
                             ':nom' => $nom,
@@ -148,7 +139,6 @@ if ($submit) {
                     } catch (PDOException $ex) {
                         die("Erreur lors de la requête SQL : " . $ex->getMessage());
                     }
-                    //affichage du tableau
                     try {
                         $requser = $dbh->prepare("SELECT * FROM utilisateur WHERE mail = :mail");
                         $requser->execute(array(":mail" => $mail));
@@ -166,9 +156,7 @@ if ($submit) {
                             ':num_telephone' => $num_telephone,
                             ':id_utilisateur' => $userinfo['id_utilisateur']
                         ));
-                        //  echo 'enregistrement effectué !';
-                        // header('Location:connexion.php');
-                    } catch (PDOException $ex) { //gestion des erreurs
+                    } catch (PDOException $ex) { 
                         die("Erreur lors de la requête SQL : " . $ex->getMessage());
                     }
                     $_SESSION['messages'] = array(
@@ -177,7 +165,7 @@ if ($submit) {
                     echo('<script>');
                     echo('window.location.href = "connexion.php";');
                   echo('</script>');
-                } //Conditions où la connexion échoue
+                }
                 else {
                     $_SESSION['messages'] = array("Password" => ["red", "Cet utilisateur ou mail existe déjà."]);
                 }

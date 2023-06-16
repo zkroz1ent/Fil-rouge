@@ -5,7 +5,6 @@ include 'function/function.php';
 require('header.php');
 require('sql.php');
 echo '<br>';
-//recupération des données
 $pseudo = isset($_POST['pseudo']) ? $_POST['pseudo'] : '';
 $email = isset($_POST['email']) ? $_POST['email'] : '';
 $submit = isset($_POST['submit']);
@@ -20,10 +19,10 @@ if ($submit) {
             'mail' => $email
         ));
         $utilisateur = $sth->fetch(PDO::FETCH_ASSOC);
-    } catch (PDOException $ex) { //erreur SQL
+    } catch (PDOException $ex) {
         die("Erreur lors de la requête SQL : " . $ex->getMessage());
     }
-    if ($pseudo == $utilisateur["pseudo"] && ($utilisateur["mail"])) { //condition et verification de l'adresse mail et speudo
+    if ($pseudo == $utilisateur["pseudo"] && ($utilisateur["mail"])) {
         $id_utilisateur = $utilisateur["id_utilisateur"];
         MailToDisk(
             $email,
@@ -31,7 +30,6 @@ if ($submit) {
             "votre nouveau mot de passe est :",
             $utilisateur["id_utilisateur"]
         );
-        // Affiche la liste des mails
         $files = array_diff(scandir(dirname(__FILE__)), array('.', '..', "index.php"));
         echo "<ul>";
         foreach ($files as $file) {
@@ -40,7 +38,6 @@ if ($submit) {
     }
     $message = "Pseudo ou email invalide";
 }
-// Envoie le mail
 echo "</ul>";
 ?>
 <!DOCTYPE html>
@@ -66,7 +63,7 @@ echo "</ul>";
     </form>
     <br>
     <?php
-    echo "$message"; //message d'erreur SQL
+    echo "$message";
     $active = 1;
     $title = "mot de passe oublié";
     require('footer.php');

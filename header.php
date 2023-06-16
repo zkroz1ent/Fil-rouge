@@ -1,15 +1,11 @@
 <?php
-//Création de la session
 session_start();
 include 'log/log.php';
 include 'sql.php';
 require_once 'script.php';
-//error_reporting(E_ERROR | E_PARSE);
 ?>
-<!-- Bouton pour ouvrir la modale -->
 
 
-<!-- Modale -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -18,7 +14,6 @@ require_once 'script.php';
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
             </div>
             <div class="modal-body">
-                <!-- Contenu de la modale -->
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
@@ -29,31 +24,24 @@ require_once 'script.php';
 
 <script>
     function search() {
-        // Récupérer la valeur de la recherche
         var query = document.getElementById("search-input").value;
 
-        // Envoyer une requête AJAX pour récupérer les résultats
         var xhr = new XMLHttpRequest();
         xhr.open("GET", "recherche-produits.php?search=" + query, true);
         xhr.onreadystatechange = function() {
             if (xhr.readyState == 4 && xhr.status == 200) {
-                // Récupérer les résultats de la recherche
                 var products = JSON.parse(xhr.responseText);
 
-                // Créer une variable pour stocker le code HTML des produits
                 var productsHtml = '';
 
-                // Parcourir la liste des produits et construire le HTML correspondant
                 for (var i = 0; i < products.length; i++) {
                     var product = products[i];
                     var imageSrc = 'chemin/vers/image/' + product.id_produit + '.jpg';
 
-                    // Si c'est le premier produit de la ligne, ouvrir une nouvelle ligne
                     if (i % 5 == 0) {
                         productsHtml += '<div class="row">';
                     }
 
-                    // Ajouter le code HTML du produit
                     productsHtml += '<div class="col-md-2">';
                     productsHtml += '<a href="produit.php?id_produit=' + product.id_produit + '">';
                     productsHtml += '<img src="img/meuble' + product.id_produit + '.jpg" alt="' + product.id_produit + '">';
@@ -62,17 +50,14 @@ require_once 'script.php';
                     productsHtml += '</a>';
                     productsHtml += '</div>';
 
-                    // Si c'est le dernier produit de la ligne, fermer la ligne
                     if (i % 5 == 4 || i == products.length - 1) {
                         productsHtml += '</div>';
                     }
                 }
 
-                // Afficher les résultats dans la modale
                 var modalBody = document.querySelector(".modal-body");
                 modalBody.innerHTML = productsHtml;
 
-                // Ouvrir la modale
                 $('#myModal').modal('show');
             }
         };
@@ -150,12 +135,10 @@ require_once 'script.php';
     <div class="marge">
         <?php
         if (isset($_SESSION['messages'])) {
-            // Permet d'afficher les messages sur toutes les autres pages
             foreach ($_SESSION['messages'] as $key => $value) {
                 echo '<div class="popup ' . $value[0] . '">';
                 echo "<p><strong>" . $key . "</strong> : " . $value[1] . "</p>";
             }
-            //Détruit la variable message
             unset($_SESSION['messages']);
             echo "</div>";
         }
