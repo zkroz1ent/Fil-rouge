@@ -62,7 +62,53 @@ if (isset($_POST['id_produit'])) {
 ?>
 
 <h1>Achat de produit : <?= $produit['lib_produit_fr'] ?></h1>
-<div class="produit-div">
+<?php 
+if($produit['id_mat_fr']==1){
+
+echo'<div class="produit-bois">';
+
+}
+?>
+<?php 
+if($produit['id_mat_fr']==2){
+
+echo '<div class="produit-metal">';
+
+}
+?>
+
+<?php 
+if($produit['id_mat_fr']==3){
+
+echo '<div class="produit-tissu">';
+
+}
+?>
+
+<?php 
+if($produit['id_mat_fr']==4){
+
+echo '<div class="produit-cuir">';
+
+}
+?>
+
+<?php 
+if($produit['id_mat_fr']==5){
+
+echo '<div class="produit-plastique">';
+
+}
+?>
+
+<?php 
+if($produit['id_mat_fr']==6){
+
+echo '<div class="produit-pierre">';
+
+}
+?>
+
     <div class="image-div">
         <img src="img/meuble<?= $id_produit ?>.jpg" width="300" height="400" alt="<?= $produit['lib_produit'] ?>">
     </div>
@@ -91,8 +137,8 @@ if (isset($_POST['id_produit'])) {
     <?php foreach ($similaires as $similaire) : $i++; ?>
         <div class="carousel-item">
             <a href="?id_produit=<?= $similaire['id_produit'] ?>">
-                <img src="img/meuble<?= $i ?>.jpg" alt="<?= $similaire['lib_produit'] ?>">
-                <h3><?= $similaire['lib_produit'] ?></h3>
+                <img src="img/meuble<?= $i ?>.jpg" alt="<?= $similaire['lib_produit_fr'] ?>">
+                <h3><?= $similaire['lib_produit_fr'] ?></h3>
                 <p>Prix : <?= $similaire['prix_produit'] ?> €</p>
             </a>
         </div>

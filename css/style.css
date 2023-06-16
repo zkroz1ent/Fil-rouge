@@ -345,7 +345,7 @@ legend.stepline-border {
   padding: 10px;
 }
 
-.produit-div {
+.produit-bois {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -355,6 +355,71 @@ legend.stepline-border {
   background-size: cover;
   justify-content: center;
   color: #000000;
+  border: 5px solid #000;
+}
+
+.produit-metal {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 20px;
+  align-content: center;
+  background-image: url(../img/metal.jpg);
+  background-size: cover;
+  justify-content: center;
+  color: red;
+  border: 5px solid #000;
+}
+
+.produit-tissu {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 20px;
+  align-content: center;
+  background-image: url(../img/tissu.jpg);
+  background-size: cover;
+  justify-content: center;
+  color: #000000;
+  border: 5px solid #000;
+}
+
+.produit-cuir {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 20px;
+  align-content: center;
+  background-image: url(../img/cuir.jpg);
+  background-size: cover;
+  justify-content: center;
+  color: red;
+  border: 5px solid #000;
+}
+
+.produit-plastique {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 20px;
+  align-content: center;
+  background-image: url(../img/plastique.jpg);
+  background-size: cover;
+  justify-content: center;
+  color: #000000;
+  border: 5px solid #000;
+}
+
+.produit-pierre {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 20px;
+  align-content: center;
+  background-image: url(../img/pierre.jpg);
+  background-size: cover;
+  justify-content: center;
+  color: red;
   border: 5px solid #000;
 }
 
