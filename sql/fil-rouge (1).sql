@@ -116,6 +116,7 @@ CREATE TABLE `produit` (
   `description` varchar(1000) NOT NULL,
   `description_fr` varchar(500) NOT NULL,
   `id_mat_fr` int(11) NOT NULL,
+  `alt` varchar(400) NOT NULL,
   `id_cat` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
