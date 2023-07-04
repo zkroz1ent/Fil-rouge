@@ -4,7 +4,8 @@ if ($_SESSION['user']['role'] == 1) {
 ?>
 <body>
     <h3>Bonjour <?= $_SESSION['user']['pseudo']; ?></h3>
-
+    <br>
+    <h4><a href="addproduits.php">Ajouter un produit</a></h4>
     <?php
     try{
         $sel=$dbh->query("SELECT * FROM produit");
@@ -14,7 +15,7 @@ if ($_SESSION['user']['role'] == 1) {
     }
 echo '<div class=paniertab>';
     echo '<table>';
-        echo '<tr><th>ID</th><th>Nom<th>Prix</th><th>Stock</th><th>Description</th><th>Matériau principal</th><th>Image</th><th>Catégorie</th></tr>';
+        echo '<tr><th>ID</th><th>Nom<th>Prix</th><th>Stock</th><th>Description</th><th>Matériau principal</th><th>Image</th><th>Catégorie</th><th>Actions</th></tr>';
             foreach($produits AS $produit){?>
                 <tr><td><?=$produit['id_produit']?></td>
                 <td><?=$produit['lib_produit_fr']?></td>
@@ -45,7 +46,7 @@ echo '<div class=paniertab>';
                 if($produit['id_mat_fr']==6){
                 echo '<td>Pierre</td>';                }
                 ?>
-                <td><img class="listeproduitimg" src="img/<?=$produit['alt']?>.jpg" alt="<?=$produit['alt']?>"></td>
+                <td><img src="img/<?=$produit['alt']?>.jpg" alt="<?=$produit['alt']?> " width="100" height="100"></td>
                 <?php 
                 if($produit['id_cat']==1){
                 echo '<td>Chaise</td>';                }
@@ -61,7 +62,8 @@ echo '<div class=paniertab>';
                 <?php 
                 if($produit['id_cat']==4){
                 echo '<td>Lave-vaisselle</td>';                }
-                ?></tr>        
+                ?>
+                <td><a href="editproduits.php?id=<?=$produit['id_produit']?>">Modifier</a> <a href="deleteproduits.php?id=<?=$produit['id_produit']?>">Supprimer</a></td></tr>        
             <?php
             }
     
