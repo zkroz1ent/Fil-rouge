@@ -28,7 +28,6 @@ $sql3 = "SELECT ID_commande, date, statut_commande, ROUND(SUM(prix_produit * nom
 WHERE commande.id_produit = produit.id_produit 
 AND commande.ID_commande = commande.ID_commande GROUP BY commande.ID_commande;";
 try{
-    $sel = $dbh->query($sql3);
 }catch (PDOException $ex) {
     die("Erreur lors de la requête SQL SELECT ligne : " . $ex->getMessage());
 }

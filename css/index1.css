@@ -48,6 +48,7 @@
   transition: background 0.3s ease, transform 400ms ease;
   transition: background 0.3s ease, transform 400ms ease, -webkit-transform 400ms ease;
   z-index: 9999;
+  background-color: white;
 }
 
 #index_header #mainnav-wrap {
@@ -978,6 +979,7 @@
   left: 0;
   width: 100%;
   z-index: 9999;
+  background-color: honeydew;
 }
 
 .banner_noTop .sider-header#index_header #hello_member > ul > li > a {
