@@ -104,7 +104,7 @@ echo '<div class="produit-pierre">';
 ?>
 
     <div class="image-div">
-        <img src="img/meuble<?= $id_produit ?>.jpg" width="300" height="400" alt="<?= $produit['lib_produit'] ?>">
+        <img src="img/<?=$produit['alt']?>.jpg" width="300" height="400" alt="<?= $produit['lib_produit'] ?>">
     </div>
     <div class="texte-div">
         <h2>Description</h2>
