@@ -18,15 +18,15 @@ try{
 }catch(PDOException $ex){
     die("Erreur lors de la requête SQL : " . $ex->getMessage());
 }
-    foreach($produits AS $produit){
-                    echo'<li class="incate product-item">';
-                        echo'<a href="produit.php?id_produit='.$produit['id_produit'].'" class="product-list-content" title="Chaise">';
-                            echo'<div class="listimg"><img src="img\meuble'.$produit['id_produit'].'.jpg" border="0" alt="meuble'.$produit['id_produit'].'"/></div>';
-                            echo'<div class="list-name">'.$produit['lib_produit_fr'].'</div>';
-                            echo'<div class="prolistdesc"></div>';
-                        echo'</a>';
-                    echo'</li>';
-    }
+    foreach($produits AS $produit){?>
+                    <li class="incate product-item">
+                        <a href="produit.php?id_produit=<?=$produit["id_produit"]?>" class="product-list-content" title="Chaise">
+                            <div class="listimg"><img src="img/<?=$produit['alt']?>" border="0" alt="<?=$produit['alt']?>"/></div>
+                            <div class="list-name"><?=$produit['lib_produit_fr']?></div>
+                            <div class="prolistdesc"></div>
+                        </a>
+                    </li>
+<?php   }
 ?>            
                 </ul>
             </div>

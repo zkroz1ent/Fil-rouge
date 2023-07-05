@@ -1,6 +1,9 @@
 <?php
 require('header.php');
 include 'sql.php'; ?>
+<?php
+if ($_SESSION['user']['role'] == 1) {
+?>
 
 <?php
 $id = isset($_GET['id']) ? $_GET['id'] : "";
@@ -63,7 +66,7 @@ try {
     
 <div class="center">
     <h1>Suppression</h1>
-    <form class="form" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+    <form class="form" action="deleteproduits.php?id=<?=$id?>" method="post">
         <table>
             <tr>
                 <td><label for="ID">ID du produit : </label></td>
@@ -100,3 +103,38 @@ try {
 </div>
 
 </body>
+<?php
+        $submit=isset($_POST['submit']);
+        if ($submit) {
+            $sql2 = "DELETE FROM produit WHERE id_produit=:id";
+            try {
+            $sel = $dbh->prepare($sql2);
+            $sel->execute(array(
+                ":id"=>$id
+            ));
+            echo('<script>');
+            echo('window.location.href = "adminproduits.php";');
+            echo('</script>');
+          }catch (PDOException $ex) {
+              die("Erreur lors de la requête SQL UPDATE ligne : " . $ex->getMessage());
+          }
+        }
+?>
+
+<?php
+
+    include "footer.php";
+} else {
+
+
+
+?><h1>Accés non autorisé</h1><?php
+
+
+
+    include "footer.php";
+}
+
+
+
+?>

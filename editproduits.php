@@ -3,6 +3,10 @@ require('header.php');
 include 'sql.php'; ?>
 
 <?php
+if ($_SESSION['user']['role'] == 1) {
+?>
+
+<?php
 $id = isset($_GET['id']) ? $_GET['id'] : "";
 $sql = "SELECT * FROM produit WHERE id_produit=:id";
 $i = 0;
@@ -22,7 +26,7 @@ try {
     
 <div class="center">
     <h1>Modification</h1>
-    <form class="form" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+    <form class="form" action="editproduits.php?id=<?=$id?>" method="post" enctype="multipart/form-data">
         <table>
             <tr>
                 <td><label for="ID">ID du produit : </label></td>
@@ -68,6 +72,13 @@ try {
                 </select>
                 </td>
             </tr>
+            <tr>
+                <td><label for="image">Image :</label></td>
+                <td>
+                <input type="file" name="alt" id="alt" accept="image/jpeg, image/png">
+                </td>
+            </tr>
+            <tr>
             <td><input class="button green full" name="submit" type="submit" value="Modifier"></td>
             </tr>
         </table>
@@ -75,3 +86,69 @@ try {
 </div>
 
 </body>
+
+<?php
+
+$submit=isset($_POST['submit']);
+if ($submit) {
+    $nom=isset($_POST['nom']) ? $_POST['nom'] :  "";
+    $prix=isset($_POST['prix']) ? $_POST['prix'] :  "";
+    $stock=isset($_POST['stock']) ? $_POST['stock'] :  "";
+    $desc=isset($_POST['desc']) ? $_POST['desc'] :  "";
+    $materiau=isset($_POST['materiau']) ? $_POST['materiau'] :  "";
+    $categorie=isset($_POST['categorie']) ? $_POST['categorie'] :  "";
+    $alt = isset($_FILES['alt']['name']) ? $_FILES['alt']['name'] : "";
+    if (isset($_FILES['alt']) && $_FILES['alt']['error'] === UPLOAD_ERR_OK) {
+        $file = $_FILES['alt'];
+        $filename = $file['name'];
+        $tempFilePath = $file['tmp_name'];
+        
+        // Déplacer le fichier téléchargé vers le dossier /img avec un nom unique
+        $targetDir = 'img/';
+        $alt = $filename;
+        $targetFilePath = $targetDir . $alt;
+        move_uploaded_file($tempFilePath, $targetFilePath);
+    }
+    $sql2 = "UPDATE produit SET lib_produit_fr=:nom, prix_produit=:prix, stock=:stock, description_fr=:desc, id_mat_fr=:materiau, id_cat=:categorie, alt=:alt 
+    WHERE id_produit=:id";
+        try {
+            $sel = $dbh->prepare($sql2);
+            $sel->execute(array(
+               ':nom' => $nom,
+               ':prix' => $prix,
+               ':stock' => $stock,
+               ':desc' => $desc,
+               ':materiau' => $materiau,
+               ':categorie' => $categorie,
+               'alt' => $alt,
+               ':id' => $id
+            ));
+            echo('<script>');
+            echo('window.location.href = "adminproduits.php";');
+            echo('</script>');
+          }catch (PDOException $ex) {
+              die("Erreur lors de la requête SQL UPDATE ligne : " . $ex->getMessage());
+          }
+            $rows = $sel->fetchAll(PDO::FETCH_ASSOC);
+
+}
+
+?>
+
+<?php
+
+    include "footer.php";
+} else {
+
+
+
+?><h1>Accés non autorisé</h1><?php
+
+
+
+    include "footer.php";
+}
+
+
+
+?>

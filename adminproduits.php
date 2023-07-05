@@ -3,6 +3,8 @@ include "header.php";
 if ($_SESSION['user']['role'] == 1) {
 ?>
 <body>
+    <br>
+    <br>
     <h3>Bonjour <?= $_SESSION['user']['pseudo']; ?></h3>
     <br>
     <h4><a href="addproduits.php">Ajouter un produit</a></h4>
@@ -46,7 +48,7 @@ echo '<div class=paniertab>';
                 if($produit['id_mat_fr']==6){
                 echo '<td>Pierre</td>';                }
                 ?>
-                <td><img src="img/<?=$produit['alt']?>.jpg" alt="<?=$produit['alt']?> " width="100" height="100"></td>
+                <td><img src="img/<?=$produit['alt']?>" alt="<?=$produit['alt']?> " width="100" height="100"></td>
                 <?php 
                 if($produit['id_cat']==1){
                 echo '<td>Chaise</td>';                }

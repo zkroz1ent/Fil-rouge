@@ -104,7 +104,7 @@ echo '<div class="produit-pierre">';
 ?>
 
     <div class="image-div">
-        <img src="img/<?=$produit['alt']?>.jpg" width="300" height="400" alt="<?= $produit['lib_produit'] ?>">
+        <img src="img/<?=$produit['alt']?>" width="300" height="400" alt="<?= $produit['lib_produit'] ?>">
     </div>
     <div class="texte-div">
         <h2>Description</h2>
@@ -131,7 +131,7 @@ echo '<div class="produit-pierre">';
     <?php foreach ($similaires as $similaire) : $i++; ?>
         <div class="carousel-item">
             <a href="?id_produit=<?= $similaire['id_produit'] ?>">
-                <img src="img/meuble<?= $i ?>.jpg" alt="<?= $similaire['lib_produit_fr'] ?>">
+                <img src="img/<?= $similaire['alt'] ?>" alt="<?= $similaire['lib_produit_fr'] ?>">
                 <h3><?= $similaire['lib_produit_fr'] ?></h3>
                 <p>Prix : <?= $similaire['prix_produit'] ?> €</p>
             </a>

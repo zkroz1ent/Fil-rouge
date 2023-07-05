@@ -13,6 +13,7 @@ if ($_SESSION['user']['role'] == 1) {
                 <div>
                     <a href="settings.php"><img src="img\settings.jpg" alt="settings" style="width: 20%;"></a>
                     <a href="commandes.php"><img src="img\commande.png" alt="commandes" style="width: 20%;"></a>
+                    <a href="adminproduits.php"><img src="img\catalog.png" alt="catalog" style="width: 20%"></a>
                 </div>
             </div>
 

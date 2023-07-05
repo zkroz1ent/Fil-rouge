@@ -44,7 +44,7 @@ require_once 'script.php';
 
                     productsHtml += '<div class="col-md-2">';
                     productsHtml += '<a href="produit.php?id_produit=' + product.id_produit + '">';
-                    productsHtml += '<img src="img/meuble' + product.id_produit + '.jpg" alt="' + product.id_produit + '">';
+                    productsHtml += '<img src="img/'+ product.alt +'" alt="' + product.alt + '">';
                     productsHtml += '<h5>' + product.lib_produit_fr + '</h5>';
                     productsHtml += '<p>' + product.prix_produit + '€</p>';
                     productsHtml += '</a>';

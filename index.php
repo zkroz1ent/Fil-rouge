@@ -58,7 +58,7 @@ require 'header.php';
                             <li class="mainimage-item">
                                 <a href="categorie.php?id=4" class="product-list-content" title="Peripherals">
                                     <div class="listimg"><img src="img\mary.png" border="0" alt="Peripherals" /></div>
-                                    <div class="list-name">Mary</div>
+                                    <div class="list-name">Lave-vaisselle</div>
                                     <div class="prolistdesc"></div>
 
                                     <span class="mainimage-line"></span>

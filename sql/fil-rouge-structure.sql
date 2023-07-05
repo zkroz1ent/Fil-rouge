@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : lun. 12 juin 2023 à 16:32
+-- Généré le : mer. 05 juil. 2023 à 16:34
 -- Version du serveur : 10.4.21-MariaDB
 -- Version de PHP : 7.4.23
 
@@ -116,8 +116,8 @@ CREATE TABLE `produit` (
   `description` varchar(1000) NOT NULL,
   `description_fr` varchar(500) NOT NULL,
   `id_mat_fr` int(11) NOT NULL,
-  `alt` varchar(400) NOT NULL,
-  `id_cat` int(11) NOT NULL
+  `id_cat` int(11) NOT NULL,
+  `alt` varchar(400) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
