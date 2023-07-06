@@ -86,8 +86,8 @@ if ($submit) {
         $targetFilePath = $targetDir . $alt;
         move_uploaded_file($tempFilePath, $targetFilePath);
     }
-    $sql = "INSERT INTO produit (lib_produit_fr, prix_produit, stock, description_fr, id_mat_fr, id_cat, alt)
-    VALUES ( :nom, :prix, :stock, :desc, :materiau, :categorie, :alt)";
+    $sql = "INSERT INTO produit (lib_produit_fr, prix_produit, stock, description_fr, id_mat_fr, id_cat, alt, actif, prix_ttc)
+    VALUES ( :nom, :prix, :stock, :desc, :materiau, :categorie, :alt, 1, :prix*1.196)";
         try {
             $sel = $dbh->prepare($sql);
             $sel->execute(array(
@@ -99,7 +99,9 @@ if ($submit) {
                ':categorie' => $categorie,
                ':alt' => $alt,
             ));
-
+            echo('<script>');
+            echo('window.location.href = "adminproduits.php";');
+            echo('</script>');
           }catch (PDOException $ex) {
               die("Erreur lors de la requête SQL UPDATE ligne : " . $ex->getMessage());
           }

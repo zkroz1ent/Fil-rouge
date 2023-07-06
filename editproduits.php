@@ -109,28 +109,51 @@ if ($submit) {
         $targetFilePath = $targetDir . $alt;
         move_uploaded_file($tempFilePath, $targetFilePath);
     }
-    $sql2 = "UPDATE produit SET lib_produit_fr=:nom, prix_produit=:prix, stock=:stock, description_fr=:desc, id_mat_fr=:materiau, id_cat=:categorie, alt=:alt 
-    WHERE id_produit=:id";
-        try {
-            $sel = $dbh->prepare($sql2);
-            $sel->execute(array(
-               ':nom' => $nom,
-               ':prix' => $prix,
-               ':stock' => $stock,
-               ':desc' => $desc,
-               ':materiau' => $materiau,
-               ':categorie' => $categorie,
-               'alt' => $alt,
-               ':id' => $id
-            ));
-            echo('<script>');
-            echo('window.location.href = "adminproduits.php";');
-            echo('</script>');
-          }catch (PDOException $ex) {
-              die("Erreur lors de la requête SQL UPDATE ligne : " . $ex->getMessage());
-          }
-            $rows = $sel->fetchAll(PDO::FETCH_ASSOC);
-
+    if ($_FILES['nom_du_champ']['size'] == 0) {
+        $sql2 = "UPDATE produit SET lib_produit_fr=:nom, prix_produit=:prix, stock=:stock, description_fr=:desc, id_mat_fr=:materiau, id_cat=:categorie, prix_ttc=:prix*1.196 
+        WHERE id_produit=:id";
+            try {
+                $sel = $dbh->prepare($sql2);
+                $sel->execute(array(
+                ':nom' => $nom,
+                ':prix' => $prix,
+                ':stock' => $stock,
+                ':desc' => $desc,
+                ':materiau' => $materiau,
+                ':categorie' => $categorie,
+                ':id' => $id
+                ));
+                echo('<script>');
+                echo('window.location.href = "adminproduits.php";');
+                echo('</script>');
+            }catch (PDOException $ex) {
+                die("Erreur lors de la requête SQL UPDATE ligne : " . $ex->getMessage());
+            }
+                $rows = $sel->fetchAll(PDO::FETCH_ASSOC);
+    }else{
+        $sql2 = "UPDATE produit SET lib_produit_fr=:nom, prix_produit=:prix, stock=:stock, description_fr=:desc, id_mat_fr=:materiau, id_cat=:categorie, alt=:alt, 
+        prix_ttc=:prix*1.196 
+        WHERE id_produit=:id";
+            try {
+                $sel = $dbh->prepare($sql2);
+                $sel->execute(array(
+                ':nom' => $nom,
+                ':prix' => $prix,
+                ':stock' => $stock,
+                ':desc' => $desc,
+                ':materiau' => $materiau,
+                ':categorie' => $categorie,
+                'alt' => $alt,
+                ':id' => $id
+                ));
+                echo('<script>');
+                echo('window.location.href = "adminproduits.php";');
+                echo('</script>');
+            }catch (PDOException $ex) {
+                die("Erreur lors de la requête SQL UPDATE ligne : " . $ex->getMessage());
+            }
+                $rows = $sel->fetchAll(PDO::FETCH_ASSOC);
+    }
 }
 
 ?>

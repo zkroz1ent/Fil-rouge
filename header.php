@@ -104,14 +104,21 @@ require_once 'script.php';
                                 ?>
                                     <li id="m7"><a href="administration.php">administration</a>
                                     </li>
+                                    <li id="m7" t><a href="deconnexion.php">Se deconnecter</a>
+                                    </li>
                             <?php
                                 } ?>
-                                <li id="m7"><a href="account.php">Mon compte</a></li>
-                                <li id="m7" t><a href="deconnexion.php">Se deconnecter</a>
-                                </li>
-                                <div id="company_logo">
-                                <a href="http://localhost/fil-rouge/panier.php"><img width="50" height="50" src="http://localhost/fil-rouge/img/oip.png"></a>
-                                </div>
+                                <?php if (isset($_SESSION['user'])) {
+                                if (isset($_SESSION['user'])&&$_SESSION['user']['role'] == '0') {
+                                ?>
+                                    <li id="m7"><a href="account.php">Mon compte</a></li>
+                                    <li id="m7" t><a href="deconnexion.php">Se deconnecter</a>
+                                    </li>
+                                    <div id="company_logo">
+                                    <a href="http://localhost/fil-rouge/panier.php"><img width="50" height="50" src="http://localhost/fil-rouge/img/oip.png"></a>
+                                    </div>
+                            <?php
+                               } } ?>
                             <?php } else {?>
                                 
                                 <li id="m7" t><a href="inscription.php">Inscription</a>

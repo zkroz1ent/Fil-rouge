@@ -17,11 +17,12 @@ if ($_SESSION['user']['role'] == 1) {
     }
 echo '<div class=paniertab>';
     echo '<table>';
-        echo '<tr><th>ID</th><th>Nom<th>Prix</th><th>Stock</th><th>Description</th><th>Matériau principal</th><th>Image</th><th>Catégorie</th><th>Actions</th></tr>';
+        echo '<tr><th>ID</th><th>Nom<th>Prix</th><th>Prix ttc</th><th>Stock</th><th>Description</th><th>Matériau principal</th><th>Image</th><th>Catégorie</th><th>Actions</th></tr>';
             foreach($produits AS $produit){?>
                 <tr><td><?=$produit['id_produit']?></td>
                 <td><?=$produit['lib_produit_fr']?></td>
-                <td><?=$produit['prix_produit']?></td>
+                <td><?=$produit['prix_produit']?> €</td>
+                <td><?=$produit['prix_ttc']?> €</td>
                 <td><?=$produit['stock']?></td>
                 <td><?=$produit['description_fr']?></td>
                 <?php 
@@ -65,7 +66,9 @@ echo '<div class=paniertab>';
                 if($produit['id_cat']==4){
                 echo '<td>Lave-vaisselle</td>';                }
                 ?>
-                <td><a href="editproduits.php?id=<?=$produit['id_produit']?>">Modifier</a> <a href="deleteproduits.php?id=<?=$produit['id_produit']?>">Supprimer</a></td></tr>        
+                <td><a href="editproduits.php?id=<?=$produit['id_produit']?>">Modifier</a> 
+                <?php if($produit['actif']==1){?><a href="deleteproduits.php?id=<?=$produit['id_produit']?>">Retirer</a><?php }?>
+                <?php if($produit['actif']==0){?><a href="readdproduits.php?id=<?=$produit['id_produit']?>">Rajouter</a><?php }?></td></tr>        
             <?php
             }
     

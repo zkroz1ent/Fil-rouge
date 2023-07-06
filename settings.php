@@ -21,7 +21,7 @@ try{
 }catch (PDOException $ex) {
 	die("Erreur lors de la requête SQL INSERT ligne : " . $ex->getMessage());
 }
-$num_banquaire = $sel->fetch(PDO::FETCH_COLUMN);
+$num_banquaires = $sel->fetchAll(PDO::FETCH_COLUMN);
 
 $sql2 = 'SELECT * FROM adherent WHERE id_adherent=:id_adherent';
 try{
@@ -45,7 +45,11 @@ $adherent = $sel->fetch(PDO::FETCH_ASSOC);
             <td><?= $_SESSION['user']['prenom']; ?></td>
             <td><?= $_SESSION['user']['pseudo']; ?></td>
             <td><?= $_SESSION['user']['mail']; ?></td>
-            <td><?= $num_banquaire; ?></td>
+            <td>
+            <?php foreach($num_banquaires as $num_banquaire){?>
+            <p><?= $num_banquaire; ?></p>
+            <?php } ?>
+            </td>
             <td>
                 <?=$adherent['adresse1'];?><br>
                 <?=$adherent['adresse2'];?><br>

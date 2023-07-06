@@ -10,7 +10,7 @@ $id = isset($_GET['id']) ? $_GET['id'] : NULL;
                 <ul class="product-list">
 <?php
 try{
-    $sel=$dbh->prepare("SELECT * FROM produit WHERE :id=produit.id_cat");
+    $sel=$dbh->prepare("SELECT * FROM produit WHERE :id=produit.id_cat AND actif=1");
     $sel->execute(array(
     ':id' => $id
     ));

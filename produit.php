@@ -45,6 +45,7 @@ if (isset($_POST['id_produit'])) {
                 'id_produit' => $id_produit,
                 'lib_produit' => $produit['lib_produit'],
                 'prix_produit' => $produit['prix_produit'],
+                'prix_ttc' => $produit['prix_ttc'],
                 'quantite' => $quantite
             );
             array_push($_SESSION['panier'], $produitPanier);
@@ -54,7 +55,7 @@ if (isset($_POST['id_produit'])) {
     }
 }
 ?>
-
+<br><br>
 <h1>Achat de produit : <?= $produit['lib_produit_fr'] ?></h1>
 <?php 
 if($produit['id_mat_fr']==1){
@@ -109,19 +110,29 @@ echo '<div class="produit-pierre">';
     <div class="texte-div">
         <h2>Description</h2>
         <p><?= $produit['description_fr'] ?></p>
-        <p>Prix : <?= $produit['prix_produit'] ?> €</p>
+        <p>Prix HT: <?= $produit['prix_produit'] ?> €</p>
+        <p>Prix TTC: <?= $produit['prix_ttc'] ?> €</p>
         <?php if (isset($messageConfirmation)) : ?>
             <p style="color: green"><?= $messageConfirmation ?></p>
         <?php endif; ?>
         <?php if (isset($messageErreur)) : ?>
             <p style="color: red"><?= $messageErreur ?></p>
         <?php endif; ?>
+        <?php if (isset($_SESSION['user'])&&$_SESSION['user']['role'] == '0') {?>
         <form method="post">
             <input type="hidden" name="id_produit" value="<?= $produit['id_produit'] ?>">
             <label for="quantite">Quantité :</label>
             <input type="number" name="quantite" id="quantite" min="1" max="<?= $produit['stock'] ?>" value="1">
             <button type="submit">Ajouter au panier</button>
         </form>
+        <?php }elseif (isset($_SESSION['user'])&&$_SESSION['user']['role'] == '1') { ?>
+            <p>Veuillez vous connecter ou vous inscrire pour ajouter cet article au panier !</p>
+            <p><a style="color: red" href="deconnexion.php">Se déconnecter</a></p>
+        <?php }else{?>
+            <p>Veuillez vous connecter ou vous inscrire pour ajouter cet article au panier !</p>
+            <p><a style="color: red" href="connexion.php">Se connecter</a> ou <a style="color: red" href="inscription.php">S'inscrire</a></p>
+            
+        <?php } ?>
     </div>
 </div>
 

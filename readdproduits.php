@@ -65,8 +65,8 @@ try {
 <body>
     
 <div class="center">
-    <h1>Retrait</h1>
-    <form class="form" action="deleteproduits.php?id=<?=$id?>" method="post">
+    <h1>Retour</h1>
+    <form class="form" action="readdproduits.php?id=<?=$id?>" method="post">
         <table>
             <tr>
                 <td><label for="ID">ID du produit : </label></td>
@@ -96,7 +96,7 @@ try {
                 <td><label for="categorie">Catégorie : </label></td>
                 <td><input type="text" id="categorie" name="categorie" value="<?=$categorie?>" disabled></td>
             </tr>
-            <td><input class="button green full" name="submit" type="submit" value="Retirer"></td>
+            <td><input class="button green full" name="submit" type="submit" value="Rajouter"></td>
             </tr>
         </table>
     </form>
@@ -106,7 +106,7 @@ try {
 <?php
         $submit=isset($_POST['submit']);
         if ($submit) {
-            $sql2 = "UPDATE produit SET actif=0 WHERE id_produit=:id";
+            $sql2 = "UPDATE produit SET actif=1 WHERE id_produit=:id";
             try {
             $sel = $dbh->prepare($sql2);
             $sel->execute(array(

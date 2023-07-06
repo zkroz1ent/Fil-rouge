@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : mer. 05 juil. 2023 à 16:34
+-- Généré le : jeu. 06 juil. 2023 à 14:47
 -- Version du serveur : 10.4.21-MariaDB
 -- Version de PHP : 7.4.23
 
@@ -35,8 +35,7 @@ CREATE TABLE `adherent` (
   `adresse4` varchar(1000) NOT NULL,
   `Pays` varchar(1000) NOT NULL,
   `num_telephone` varchar(1000) NOT NULL,
-  `id_utilisateur` int(11) NOT NULL,
-  `id_banquaire` int(11) DEFAULT NULL
+  `id_utilisateur` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -75,19 +74,8 @@ CREATE TABLE `commande` (
 CREATE TABLE `information_banquaire` (
   `id_banquaire` int(11) NOT NULL,
   `num` varchar(1000) NOT NULL,
-  `date_expiration` date NOT NULL,
+  `date_expiration` varchar(4000) NOT NULL,
   `id_adherent` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Structure de la table `materiaux`
---
-
-CREATE TABLE `materiaux` (
-  `id_mat` int(11) NOT NULL,
-  `lib_mat` varchar(1000) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -117,7 +105,9 @@ CREATE TABLE `produit` (
   `description_fr` varchar(500) NOT NULL,
   `id_mat_fr` int(11) NOT NULL,
   `id_cat` int(11) NOT NULL,
-  `alt` varchar(400) DEFAULT NULL
+  `alt` varchar(400) DEFAULT NULL,
+  `actif` tinyint(1) DEFAULT NULL,
+  `prix_ttc` float DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -145,7 +135,7 @@ CREATE TABLE `utilisateur` (
 --
 ALTER TABLE `adherent`
   ADD PRIMARY KEY (`id_adherent`),
-  ADD KEY `adherent_information_banquaire1_FK` (`id_banquaire`);
+  ADD KEY `fk_adherent_utilisateur` (`id_utilisateur`);
 
 --
 -- Index pour la table `categorie`
@@ -165,13 +155,8 @@ ALTER TABLE `commande`
 -- Index pour la table `information_banquaire`
 --
 ALTER TABLE `information_banquaire`
-  ADD PRIMARY KEY (`id_banquaire`);
-
---
--- Index pour la table `materiaux`
---
-ALTER TABLE `materiaux`
-  ADD PRIMARY KEY (`id_mat`);
+  ADD PRIMARY KEY (`id_banquaire`),
+  ADD KEY `fk_banquaire_adherent` (`id_adherent`);
 
 --
 -- Index pour la table `materiaux_fr`
@@ -222,12 +207,6 @@ ALTER TABLE `information_banquaire`
   MODIFY `id_banquaire` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT pour la table `materiaux`
---
-ALTER TABLE `materiaux`
-  MODIFY `id_mat` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT pour la table `materiaux_fr`
 --
 ALTER TABLE `materiaux_fr`
@@ -253,7 +232,7 @@ ALTER TABLE `utilisateur`
 -- Contraintes pour la table `adherent`
 --
 ALTER TABLE `adherent`
-  ADD CONSTRAINT `adherent_information_banquaire1_FK` FOREIGN KEY (`id_banquaire`) REFERENCES `information_banquaire` (`id_banquaire`);
+  ADD CONSTRAINT `fk_adherent_utilisateur` FOREIGN KEY (`id_utilisateur`) REFERENCES `utilisateur` (`id_utilisateur`);
 
 --
 -- Contraintes pour la table `commande`
@@ -262,6 +241,12 @@ ALTER TABLE `commande`
   ADD CONSTRAINT `FK_adherent` FOREIGN KEY (`id_adherent`) REFERENCES `adherent` (`id_adherent`),
   ADD CONSTRAINT `commande_adherent0_FK` FOREIGN KEY (`id_adherent`) REFERENCES `adherent` (`id_adherent`),
   ADD CONSTRAINT `commande_produit1_FK` FOREIGN KEY (`id_produit`) REFERENCES `produit` (`id_produit`);
+
+--
+-- Contraintes pour la table `information_banquaire`
+--
+ALTER TABLE `information_banquaire`
+  ADD CONSTRAINT `fk_banquaire_adherent` FOREIGN KEY (`id_adherent`) REFERENCES `adherent` (`id_adherent`);
 
 --
 -- Contraintes pour la table `produit`

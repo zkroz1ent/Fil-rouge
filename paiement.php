@@ -73,17 +73,24 @@ $num_banquaire = $sel->fetch(PDO::FETCH_COLUMN);
 <?php
 	if (isset($_SESSION['panier'])) {
 		$total_price = 0;
+		$total_price_ttc=0;
 		foreach ($_SESSION['panier'] as $product) {
 			$prix_produit = $product['prix_produit'];
+			$prix_ttc = $product['prix_ttc'];
 			$quantite = $product['quantite'];
 			$total_produit = $prix_produit * $quantite;
+			$total_produit_ttc = $prix_ttc * $quantite;
 			$total_price += $total_produit;
+			$total_price_ttc += $total_produit_ttc;
 		}
 	} else {
 		echo "Votre panier est vide.";
 	}
 	?>
-	<h2>Montant de la commande : <?=$total_price?> </h2>
+	<br>
+	<br>
+	<h2>Montant de la commande HT: <?=$total_price?> </h2>
+	<h2>Montant de la commande TTC: <?=$total_price_ttc?> </h2>
 <form class="form" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
 		<label for="name">Name:</label>
 		<input type="text" id="name" name="name" placeholder="Enter your name" required>
@@ -147,6 +154,15 @@ $num_banquaire = $sel->fetch(PDO::FETCH_COLUMN);
 					$req->execute(array(
 						':card' => $card,
 						':exp' => $exp,
+						':id_adherent' => $id_adherent
+					));
+					$id_banquaire = $dbh->lastInsertId();
+
+					// Mettre à jour la table adherent avec l'ID banquaire
+					$sql6 = 'UPDATE adherent SET id_banquaire = :id_banquaire WHERE id_adherent = :id_adherent';
+					$req2 = $dbh->prepare($sql6);
+					$req2->execute(array(
+						':id_banquaire' => $id_banquaire,
 						':id_adherent' => $id_adherent
 					));
 				}
