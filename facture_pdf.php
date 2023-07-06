@@ -109,14 +109,16 @@ $pdf->SetFillColor(255, 255, 255);
 $pdf->SetFont('calibri', '', 9);
 $pdf->SetFont('', 'B');
 $pdf->setY(124);
-$pdf->setX(5);
+$pdf->setX(3);
 $pdf->SetFillColor(177, 254, 152);
-$pdf->Cell(50, 8, utf8_decode("Num° Commande"), 1, 0, "C");
-$pdf->Cell(55, 8, utf8_decode("Nom Produit"), 1, 0, "C");
-$pdf->Cell(20, 8, utf8_decode("prix produit"), 1, 0, "C");
+$pdf->Cell(30, 8, utf8_decode("Num° Commande"), 1, 0, "C");
+$pdf->Cell(40, 8, utf8_decode("Nom Produit"), 1, 0, "C");
+$pdf->Cell(30, 8, utf8_decode("prix produit"), 1, 0, "C");
+$pdf->Cell(20, 8, utf8_decode("TVA"), 1, 0, "C");
+$pdf->Cell(20, 8, utf8_decode("prix ttc"), 1, 0, "C");
 $pdf->Cell(20, 8, utf8_decode("nombre"), 1, 0, "C");
 $pdf->Cell(20, 8, utf8_decode("date"), 1, 0, "C");
-$pdf->Cell(30, 8, utf8_decode("statut_commande"), 1, 1, "C");
+$pdf->Cell(25, 8, utf8_decode("statut commande"), 1, 1, "C");
 $prixfinal = 0;
 foreach ($commandes as $commande) {
     $sql2 = "SELECT * FROM produit WHERE id_produit=:id_produit";
@@ -130,25 +132,28 @@ foreach ($commandes as $commande) {
     }
     $produit = $sel->fetch(PDO::FETCH_ASSOC);
     $pdf->SetFont('', '');
-    $pdf->setX(5);
+    $pdf->setX(3);
+
     $pdf->SetFillColor(177, 254, 152);
-    $pdf->Cell(50, 8, utf8_decode($commande['ID_commande']), 1, 0, "C");
-    $pdf->Cell(55, 8, utf8_decode($produit['lib_produit_fr']), 1, 0, "C");
-    $pdf->Cell(20, 8, utf8_decode($produit['prix_produit']), 1, 0, "C");
+    $pdf->Cell(30, 8, utf8_decode($commande['ID_commande']), 1, 0, "C");
+    $pdf->Cell(40, 8, utf8_decode($produit['lib_produit_fr']), 1, 0, "C");
+    $pdf->Cell(30, 8, utf8_decode($produit['prix_produit']), 1, 0, "C");
+    $pdf->Cell(20, 8, utf8_decode('21%'), 1, 0, "C");
+    $pdf->Cell(20, 8, utf8_decode($produit['prix_ttc']), 1, 0, "C");
     $pdf->Cell(20, 8, utf8_decode($commande['nombre']), 1, 0, "C");
     $pdf->Cell(20, 8, utf8_decode($commande['date']), 1, 0, "C");
-    $pdf->Cell(30, 8, utf8_decode($commande['statut_commande']), 1, 1, "C");
-    $prixfinal += $produit['prix_produit'] * $commande['nombre'];
+    $pdf->Cell(25, 8, utf8_decode($commande['statut_commande']), 1, 1, "C");
+    $prixfinal += $produit['prix_ttc'] * $commande['nombre'];
 }
 $pdf->setY(220);
 $pdf->setX(153);
-$pdf->Cell(30, 8, utf8_decode("Total commande"), 1, 1, "C");
+$pdf->Cell(40, 8, utf8_decode("Total commande (TTC*)"), 1, 1, "C");
 $pdf->setY(228);
 $pdf->setX(153);
-$pdf->Cell(30, 8, utf8_decode($prixfinal), 1, 1, "C");
+$pdf->Cell(40, 8, utf8_decode($prixfinal), 1, 1, "C");
 $pdf->SetFillColor(133, 241, 238);
 
 
 
-$pdf->Output('f', 'Factures/'.$_SESSION["user"]["id_utilisateur"].''.$utilisateur["ID_commande"].'.pdf');
-header('Location: Factures/'.$_SESSION["user"]["id_utilisateur"].''.$utilisateur["ID_commande"].'.pdf');
+$pdf->Output('f', 'Factures/' . $_SESSION["user"]["id_utilisateur"] . '' . $utilisateur["ID_commande"] . '.pdf');
+header('Location: Factures/' . $_SESSION["user"]["id_utilisateur"] . '' . $utilisateur["ID_commande"] . '.pdf');

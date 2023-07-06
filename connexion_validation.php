@@ -21,7 +21,7 @@ if (strlen($pseudo) >= 0) {
         catch (PDOException $ex) {
             die("Erreur lors de la requête SQL : " . $ex->getMessage());
         }
-        print_r($user);
+   
         
         if ($pseudo === $user['pseudo'] && password_verify($password, $user['mdp'])) {
             
