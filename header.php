@@ -8,7 +8,7 @@ require_once 'script.php';
 
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
-        <div class="modal-content">
+        <div class="modal-content" style="margin-top: 160px;">
             <div class="modal-header">
                 <h4 class="modal-title" id="myModalLabel">Résultats de la recherche</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>

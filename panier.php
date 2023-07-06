@@ -1,5 +1,5 @@
 <?php require 'header.php';  ?>
-<h1>Bonjour <?= $_SESSION['user']['pseudo']; ?></h1>
+<h1 style="margin-top: 60px;">Bonjour <?= $_SESSION['user']['pseudo']; ?></h1>
 
 <?php
 
@@ -67,7 +67,7 @@ if (isset($_SESSION['panier'])) {
     echo '<tr><td colspan="3">Total:</td><td>' . $total_price . '€</td></tr>';
     echo '<tr><td colspan="3">Total:</td><td>' . $total_ttc . '€</td></tr>';
     echo '</table>';
-    echo '<div class=boutonach>';
+    echo '<div class=boutonach style="text-align: center;">';
         echo '<a href="http://localhost/fil-rouge/paiement.php" class="achat-bouton">Passer commande</a>';
     echo '</div>';
 } else {
