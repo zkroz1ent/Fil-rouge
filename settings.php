@@ -38,7 +38,7 @@ $adherent = $sel->fetch(PDO::FETCH_ASSOC);
 <body>
 
     <h3 style="
-    margin-left: 1008px;
+   text-align: center;
     margin-top: 70px;">Bonjour <?= $_SESSION['user']['pseudo']; ?></h3>
     <div class=" paniertab">
         <table>

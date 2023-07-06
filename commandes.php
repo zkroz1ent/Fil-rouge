@@ -40,7 +40,7 @@ $adherents = $sel->fetchAll(PDO::FETCH_ASSOC);
     <h1>Bonjour <?= $_SESSION['user']['pseudo']; ?></h1>
     <?php
     if (isset($_SESSION['user'])&&$_SESSION['user']['role'] == '0') {
-        echo '<h3>Mes commandes</h3>';
+        echo '<h3 style ="text-align: center;">Mes commandes</h3>';
         echo '<div class=paniertab>';
         echo '<table>';
         echo '<tr><th>Produit</th><th>Prix total<th>Date</th><th>Action</th></tr>';

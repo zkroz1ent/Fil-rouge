@@ -7,7 +7,8 @@ if ($_SESSION['user']['role'] == 1) {
 
 
         <div style="display: flex; flex-direction: column; align-items: center; height: 50vh;">
-            <h3>Bonjour <?= $_SESSION['user']['pseudo']; ?></h3>
+        <h3 style="
+    text-align: center;">Bonjour <?= $_SESSION['user']['pseudo']; ?></h3>
 
             <div style="text-align: center;">
                 <div>
