@@ -46,7 +46,7 @@ $total_price = 0;
 $total_ttc = 0;
 if (isset($_SESSION['panier'])) {
     echo '<table>';
-    echo '<tr><th>Produit</th><th>Prix</th><th>Prix ttc</th<th>Quantité</th><th>Action</th></tr>';
+    echo '<tr><th>Produit</th><th>Prix</th><th>Prix ttc</th><th>Quantité</th><th>Action</th></tr>';
     foreach ($_SESSION['panier'] as $product) {
         echo '<tr>';
         echo '<td>' . $product['lib_produit'] . '</td>';
