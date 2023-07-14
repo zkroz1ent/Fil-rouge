@@ -64,10 +64,12 @@ $adherents = $sel->fetchAll(PDO::FETCH_ASSOC);
         echo '<table>';
         echo '<tr><th>ID</th><th>Nom</th><th>Prenom<th>Accès</th></tr>';
         foreach ($adherents as $adherent) {
+        echo '<tr>';
         echo '<td>'.$adherent['id_adherent'].'</td>';
         echo '<td>'.$adherent['nom'].'</td>';
         echo '<td>'.$adherent['prenom'].'</td>';
         echo '<td><a href="commandesadmin.php?id='.$adherent['id_adherent'].'">Accèder</a></td>';
+        echo '</tr>';
         }
         echo '</table>';
         echo '</div';
