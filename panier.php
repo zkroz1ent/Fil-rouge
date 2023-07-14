@@ -65,7 +65,7 @@ if (isset($_SESSION['panier'])) {
         $total_ttc += $product['prix_ttc'] * $product['quantite'];
     }
     echo '<tr><td colspan="3">Total:</td><td>' . $total_price . '€</td></tr>';
-    echo '<tr><td colspan="3">Total:</td><td>' . $total_ttc . '€</td></tr>';
+    echo '<tr><td colspan="3">Total TTC:</td><td>' . $total_ttc . '€</td></tr>';
     echo '</table>';
     echo '<div class=boutonach style="text-align: center;">';
         echo '<a href="http://localhost/fil-rouge/paiement.php" class="achat-bouton">Passer commande</a>';
