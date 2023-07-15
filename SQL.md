@@ -2,7 +2,7 @@
 
 Dans ce dossier, vous retrouverez deux fichiers indispensable pour le bon fonctionnement du site Airneis
 - fil-rouge-strucutre.sql
- fil-rouge-donnees.sql 
+- fil-rouge-donnees.sql 
 
 Ils vont permettront de créer **la base de données** du projet.
 
