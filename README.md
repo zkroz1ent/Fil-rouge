@@ -18,4 +18,4 @@ Sur site, nous avons 3 rôles:
   
   Azertyuiop1234+
   
-  Sur ce repository, vous y retrouvez le code du site ainsi que la base de donnée. 
+  Sur ce repository, vous y retrouvez le code du site ainsi que la base de donnée. Les dossiers contiennents des classes / css / sql...Les pages du site sont toutes disponibles à la racine du repository. 
